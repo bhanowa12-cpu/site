@@ -1,0 +1,510 @@
+/* ============================================================
+   Таблица стилей сайта «The Beatles» (подключается на всех страницах)
+   Цвета сайта: тёмно-фиолетовый #380577, золотой #E3B04B, светлый #FBF7F0
+   ============================================================ */
+
+/* ТК5, задание 1. Шаблон стилей: body, header, main, footer */
+body {
+    display: block;
+    margin: 0;                        /* убираем отступ браузера по краям страницы */
+    /* цвет фона здесь не задаём: на каждой странице он задан атрибутом bgcolor,
+       а на Главной — фотографией в атрибуте background (самостоятельная работа, п. 1) */
+    background-attachment: fixed;     /* фото-фон на Главной стоит на месте при прокрутке */
+    background-size: cover;           /* фото растягивается на весь экран */
+    background-position: center;
+    color: #2b2236;                   /* цвет основного текста */
+}
+
+/* Дополнительно: плавная прокрутка к закладкам и оформление мелочей */
+html { scroll-behavior: smooth; }             /* переход по ссылке-закладке — плавно, а не рывком */
+a[name] { scroll-margin-top: 70px; }          /* закладка не прячется под меню прокрутки */
+::selection { background: #F5D98B; color: #1f0342; }   /* цвет выделенного мышкой текста */
+:focus-visible { outline: 3px solid #E3B04B; outline-offset: 3px; border-radius: 4px; }  /* рамка при переходе клавишей Tab */
+html { scrollbar-color: #4b0d8f #EDE3FF; }    /* цвет полосы прокрутки */
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: #EDE3FF; }
+::-webkit-scrollbar-thumb { background: #4b0d8f; border-radius: 10px; border: 2px solid #EDE3FF; }
+
+/* Дополнительно: анимация. @keyframes описывает, как меняется элемент от начала (from) до конца (to) */
+@keyframes rise {                  /* блок плавно появляется и поднимается на 18px */
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: none; }
+}
+@keyframes drift {                 /* медленное «дыхание» панорамы: картинка чуть увеличивается */
+    from { transform: scale(1); }
+    to   { transform: scale(1.07); }
+}
+@media (prefers-reduced-motion: no-preference) {   /* только если в системе не отключена анимация */
+    .card, .facts section, .content, .parent, .textcols-item, .inner-div, .sidenav {
+        animation: rise .7s ease-out backwards;   /* backwards: после анимации работают обычные :hover */
+    }
+    .facts section:nth-child(2), .parent { animation-delay: .12s; }   /* второй блок — чуть позже */
+    .facts section:nth-child(3) { animation-delay: .24s; }            /* третий — ещё позже */
+    #panorama img { animation: drift 24s ease-in-out infinite alternate; }   /* бесконечно, туда и обратно */
+}
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+}
+
+/* Шапка сайта: тёмно-фиолетовый фон с плавным переходом цвета (градиент) */
+header {
+    background-color: #380577;
+    background-image: linear-gradient(135deg, #1f0342 0%, #380577 55%, #4b0d8f 100%);
+    color: MediumSlateBlue;
+    padding: 1rem 1rem 1.6rem;        /* внутренние отступы: сверху, по бокам, снизу */
+    text-align: center;
+    font-family: "Playfair Display", Modern, "Monotype Corsiva", serif;
+    border-bottom: 3px solid #E3B04B; /* золотая линия под шапкой */
+}
+
+/* Основная часть страницы */
+main {
+    background: rgba(255, 127, 80, 0.06);   /* coral, но почти прозрачный — виден цвет фона страницы */
+    padding: 30px 0 40px;
+    min-height: calc(100vh - 430px);        /* на короткой странице подвал всё равно внизу экрана */
+}
+
+/* Подвал сайта */
+footer {
+    background: #1a0238;
+    padding: 0 0 1.5rem;
+    text-align: center;
+    color: #cbb9e6;
+}
+
+/* ТК5, задание 2. Оформление основных тегов h1, h2, h3, p, a */
+h1 {
+    text-align: center;
+    font-family: "Playfair Display", Modern, "Monotype Corsiva", serif;   /* шрифт заголовков; если его нет — следующий по списку */
+    font-style: italic;               /* курсив */
+    color: #380577;
+    letter-spacing: 0.5px;            /* расстояние между буквами */
+}
+header h1 {                           /* заголовок внутри шапки — золотой и крупнее */
+    color: #F5D98B;
+    font-size: 2.6rem;
+    margin: 10px 0 0;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);   /* мягкая тень под буквами */
+}
+h2, h3 {
+    font-family: "Playfair Display", Modern, "Monotype Corsiva", serif;
+    color: #380577;
+}
+p, li {
+    text-align: justify;              /* выравнивание по ширине */
+    font-family: Inter, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.75;                /* расстояние между строками */
+    letter-spacing: 0.1px;
+    color: #2b2236;
+    hyphens: manual;                  /* слова не разрываются дефисом посреди строки */
+    text-wrap: pretty;                /* последняя строка абзаца не остаётся из одного короткого слова */
+}
+p em, li em { color: #4b1f7a; }       /* выделенные курсивом слова — чуть заметнее */
+h1, h2, h3 { text-wrap: balance; }    /* строки заголовка примерно одинаковой длины */
+a {
+    text-align: center;
+    font-family: Inter, Arial, sans-serif;
+    color: #5b1fa8;
+    text-decoration: none;            /* убираем подчёркивание ссылок */
+    transition: color .2s;            /* цвет меняется плавно за 0,2 секунды */
+}
+a:hover { color: #B8862B; }           /* :hover — когда наводим мышку */
+
+/* Строка навигации (самостоятельная работа, п. 2: шрифт и цвет задан атрибутом style) */
+.nav { font-size: 14px; text-align: center; margin: 6px 0 0; line-height: 2; }
+.nav a { color: #EDE3FF; padding: 2px 4px; border-bottom: 1px solid transparent; }
+.nav a:hover { color: #F5D98B; border-bottom-color: #E3B04B; }   /* при наведении появляется золотая линия */
+.nav .current { padding: 2px 4px; font-weight: 600; }   /* текущая страница — без ссылки */
+
+/* ТК5, задание 4. Панорама под шапкой */
+#panorama {
+    width: 100%;
+    height: 130px;           /* высоту подобрали под панораму Ливерпуля */
+    overflow: hidden;        /* всё, что выходит за блок, скрывается */
+    margin: auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3), 0 16px 20px rgba(0,0,0,0.2);
+    position: relative;      /* нужно, чтобы затемнение (::after) встало внутри блока */
+}
+#panorama img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;       /* картинка заполняет блок без искажения пропорций */
+    object-position: center 55%;
+    display: block;
+}
+#panorama::after {           /* лёгкое затемнение снизу */
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 40px;
+    background: linear-gradient(transparent, rgba(31, 3, 66, 0.45));
+}
+
+/* Общая «карточка» для текста на внутренних страницах */
+.card {
+    max-width: 960px;        /* не шире 960px — так текст удобно читать */
+    margin: 0 auto 28px;     /* auto слева и справа — карточка по центру */
+    padding: 26px 34px;
+    background: #FBF7F0;
+    border-radius: 18px;     /* скруглённые углы */
+    box-shadow: 0 10px 30px rgba(31, 3, 66, 0.12);   /* тень под карточкой */
+    box-sizing: border-box;  /* отступы входят в ширину блока */
+}
+.card h2 { margin-top: 0; }
+
+/* ТК5, задание 5. Кнопка «Скачать» */
+.button-style {
+    display: inline-block;
+    padding: 10px 22px;
+    background: #E3B04B;
+    border: 1px solid #1f0342; /* рамка тёмного цвета */
+    border-radius: 30px;       /* круглые края кнопки */
+    color: #1f0342;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    font-family: Inter, Arial, sans-serif;
+    transition: background .2s, transform .2s;
+}
+.button-style:hover { background: #F5D98B; color: #1f0342; transform: translateY(-2px); }   /* кнопка чуть приподнимается */
+
+/* Самостоятельная работа, задание 1.1. Гамбургер-меню (Главная).
+   Как работает: невидимая «галочка» (checkbox) + метка label с тремя полосками.
+   Щелчок по полоскам ставит галочку, и правило :checked показывает список меню */
+.menu { position: relative; }
+.burger-checkbox {
+    position: absolute;
+    visibility: hidden;      /* сама галочка не видна */
+}
+.burger {                    /* кнопка из трёх полосок */
+    cursor: pointer;
+    display: block;
+    position: relative;
+    border: none;
+    background: transparent;
+    width: 40px;
+    height: 26px;
+    margin: 10px auto 14px;
+}
+.burger::before,
+.burger::after {             /* ::before — верхняя полоска (+ средняя через тень), ::after — нижняя */
+    content: '';
+    left: 0;
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 4px;
+    border-radius: 10px;
+    background: #E3B04B;
+}
+.burger::before {
+    top: 0;
+    box-shadow: 0 11px 0 #E3B04B;   /* тень ниже на 11px — это и есть средняя полоска */
+    transition: box-shadow .3s .15s, top .3s .15s, transform .3s;
+}
+.burger::after {
+    bottom: 0;
+    transition: bottom .3s .15s, transform .3s;
+}
+.burger-checkbox:checked + .burger::before {   /* меню открыто: полоски превращаются в крестик */
+    top: 11px;
+    transform: rotate(45deg);
+    box-shadow: 0 6px 0 rgba(0,0,0,0);
+    transition: box-shadow .15s, top .3s, transform .3s .15s;
+}
+.burger-checkbox:checked + .burger::after {
+    bottom: 11px;
+    transform: rotate(-45deg);
+    transition: bottom .3s, transform .3s .15s;
+}
+/* список меню открывается, когда нажат гамбургер */
+.menu-list {
+    display: none;            /* сначала список скрыт */
+    position: absolute;       /* меню открывается поверх страницы, не сдвигая шапку */
+    top: 44px;
+    left: 50%;
+    transform: translateX(-50%);   /* точное выравнивание по центру */
+    z-index: 30;              /* выше остальных элементов */
+    list-style: none;         /* без точек у пунктов */
+    margin: 0;
+    padding: 8px 0;
+    width: 280px;
+    background: #FBF7F0;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+.burger-checkbox:checked ~ .menu-list { display: block; }   /* галочка стоит — список виден */
+.menu-list li { text-align: center; }
+.menu-item {
+    display: block;
+    padding: 9px 0;
+    color: #380577;
+    font-weight: 500;
+    text-decoration: none;
+}
+.menu-item:hover { background: #F5D98B; color: #1f0342; }
+
+/* Самостоятельная работа, задание 1.2. Всплывающий список (кнопка «Меню»).
+   Как работает: список скрыт (display: none) и появляется при наведении на кнопку (:hover) */
+.dropbtn {
+    background-color: #E3B04B;
+    color: #1f0342;
+    padding: 12px 22px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: Inter, Arial, sans-serif;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;          /* курсор-«рука» */
+}
+.dropbtn .fa { margin-right: 6px; }
+.dropdown {
+    position: relative;       /* список позиционируется относительно этого блока */
+    display: inline-block;
+    float: left;              /* кнопка слева в шапке */
+    z-index: 10;
+}
+.dropdown-content {
+    display: none;            /* список скрыт */
+    position: absolute;       /* появляется поверх страницы, ниже кнопки */
+    left: 0;
+    top: 100%;
+    background-color: #FBF7F0;
+    min-width: 220px;
+    padding: 6px 0;
+    border-radius: 12px;
+    box-shadow: 0px 12px 28px 0px rgba(0,0,0,0.3);
+    z-index: 1;
+    text-align: left;
+}
+.dropdown-content a {
+    color: #380577;
+    padding: 10px 18px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+.dropdown-content a:hover { background-color: #F5D98B; color: #1f0342; }
+.dropdown-content span {            /* текущая страница в списке */
+    display: block;
+    padding: 10px 18px;
+    color: #B8862B;
+    font-family: Inter, Arial, sans-serif;
+    font-weight: 600;
+}
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content { display: block; }   /* открывается и касанием/клавиатурой */
+.dropdown:hover .dropbtn,
+.dropdown:focus-within .dropbtn { background-color: #F5D98B; }
+
+/* Самостоятельная работа, задание 1.3. Меню горизонтальной прокрутки (История) */
+div.scrollmenu {
+    background-color: #1f0342;
+    overflow: auto;           /* если пунктов много — появляется прокрутка вбок */
+    white-space: nowrap;      /* все пункты в одну строку */
+    text-align: center;
+    position: sticky;         /* меню остаётся сверху при прокрутке */
+    top: 0;
+    z-index: 20;
+}
+div.scrollmenu a {
+    display: inline-block;
+    color: #EDE3FF;
+    text-align: center;
+    padding: 14px 18px;
+    text-decoration: none;
+    font-size: 14px;
+}
+div.scrollmenu a:hover { background-color: #380577; color: #F5D98B; }
+div.scrollmenu span {         /* текущая страница выделена золотым */
+    display: inline-block;
+    padding: 14px 18px;
+    color: #1f0342;
+    background: #E3B04B;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Самостоятельная работа, задание 2. Панель значков в подвале.
+   Значки берутся из библиотеки Font Awesome (ссылка в <head> каждой страницы) */
+.icon-bar {
+    width: 100%;
+    background-color: #2a0659;
+    overflow: auto;           /* блок растягивается под значки с float */
+}
+.icon-bar a {
+    float: left;              /* значки встают в ряд */
+    width: 20%;               /* 5 значков по 20% = вся ширина */
+    text-align: center;
+    padding: 14px 0;
+    transition: all 0.3s ease;
+    color: #EDE3FF;
+    font-size: 30px;          /* размер значка */
+}
+.icon-bar a:hover { background-color: #380577; color: #F5D98B; }
+.active { background-color: #E3B04B !important; color: #1f0342 !important; }   /* значок текущей страницы */
+
+footer hr { margin-top: 22px; }
+footer p { text-align: center; margin: 8px 0 0; }
+footer font { color: #cbb9e6; letter-spacing: .5px; }
+
+/* Боковое меню на Главной (ТК5, задание 2, п. 8 и задание 3, п. 3) */
+.sidenav {
+    float: left;              /* меню прижато к левому краю, текст справа от него */
+    width: 13.5%;
+    background: rgba(31, 3, 66, 0.92);   /* тёмный фон, слегка прозрачный */
+    padding: 14px 0;
+    border-radius: 0 18px 18px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+}
+.sidenav a {
+    display: block;           /* каждая ссылка — на отдельной строке */
+    padding: 11px 20px;
+    color: #EDE3FF;
+    font-size: 14px;
+    text-decoration: none;
+    text-align: left;
+    border-left: 3px solid transparent;
+}
+.sidenav a:hover { background: rgba(227, 176, 75, 0.15); color: #F5D98B; border-left-color: #E3B04B; }
+
+/* Самостоятельная работа, задание 3: свои элементы — три колонки с float (как в примере практикума) */
+.facts { overflow: hidden; padding: 30px 1.5% 0; }
+.facts section {
+    float: left;              /* три блока встают в ряд */
+    width: 30%;               /* 3 × 30% + отступы = 100% */
+    margin: 0 1.5% 24px 1.5%;
+    background: #FBF7F0;
+    border-radius: 18px;
+    border-top: 4px solid #E3B04B;
+    padding: 18px 22px;
+    box-sizing: border-box;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    text-align: center;
+}
+.facts .num {                 /* крупная цифра в блоке */
+    display: block;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 44px;
+    color: #B8862B;
+    line-height: 1.1;
+}
+.facts section h3 { margin: 4px 0 6px; }
+.facts section p { text-align: center; margin: 0; }
+.clear { clear: both; }       /* отменяет обтекание float — следующий блок начинается с новой строки */
+
+/* Таблица фильмографии (ТК4) */
+table {
+    background: #FBF7F0;
+    border-collapse: collapse;   /* двойные рамки ячеек сливаются в одну */
+    border-color: #d8c9ea;
+    box-shadow: 0 10px 30px rgba(31, 3, 66, 0.12);
+}
+td {
+    padding: 12px 16px;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 15px;
+    border-color: #d8c9ea;
+}
+tr:first-child td {              /* строка заголовков */
+    background: #380577;
+    color: #F5D98B;
+    font-weight: 600;
+    letter-spacing: .3px;
+}
+tr:nth-child(odd):not(:first-child) td { background: #F3ECFA; }   /* строки через одну — «зебра» */
+td img { border-radius: 6px; box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25); display: block; margin: auto; transition: transform .25s; }
+td img:hover { transform: scale(1.08); }   /* афиша чуть увеличивается при наведении */
+.table-wrap { overflow-x: auto; }   /* если таблица не помещается — прокручивается только она */
+
+/* Список источников */
+ol.sources li { margin-bottom: 8px; text-align: left; }
+ol.sources .fa { width: 22px; margin-right: 6px; color: #B8862B; text-align: center; }
+
+/* Дополнительно: кнопка «Наверх» на длинных страницах */
+.to-top {
+    position: fixed;          /* кнопка «приклеена» к окну и не уезжает при прокрутке */
+    right: 22px;
+    bottom: 22px;
+    z-index: 40;
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    border-radius: 50%;       /* круглая кнопка */
+    background: #E3B04B;
+    color: #1f0342;
+    font-size: 20px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(31, 3, 66, 0.35);
+    transition: transform .2s, background .2s;
+}
+.to-top:hover { background: #F5D98B; color: #1f0342; transform: translateY(-3px); }
+
+/* Дополнительно: увеличенная афиша (Фильмография).
+   Как работает: ссылка ведёт на #poster1; блок с этим id становится «целью» (:target) и показывается.
+   Щелчок по фону ведёт на #films — цель меняется, и блок снова скрывается. JavaScript не нужен */
+.zoom { display: inline-block; cursor: zoom-in; }
+.lightbox {
+    display: none;
+    position: fixed;          /* затемнение на весь экран */
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: 100;
+    background: rgba(15, 1, 32, 0.9);
+    align-items: center;      /* картинка по центру по вертикали */
+    justify-content: center;  /* и по горизонтали */
+}
+.lightbox:target { display: flex; }
+.lightbox-bg { position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 1; cursor: zoom-out; }
+.lightbox figure { position: relative; z-index: 2; margin: 0 16px; text-align: center; }
+.lightbox img {
+    height: 380px;
+    width: auto;
+    max-width: 90vw;          /* vw — процент от ширины окна */
+    max-height: 75vh;         /* vh — процент от высоты окна */
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+.lightbox figcaption {
+    margin-top: 14px;
+    color: #F5D98B;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 20px;
+}
+.lightbox-close {             /* крестик «закрыть» в углу */
+    position: absolute;
+    top: 14px;
+    right: 26px;
+    z-index: 3;
+    color: #F5D98B;
+    font-size: 46px;
+    line-height: 1;
+}
+.lightbox-close:hover { color: #fff; }
+
+/* Узкий экран (телефон): правила внутри @media работают, только если ширина окна до 800px.
+   Блоки встают друг под другом */
+@media (max-width: 800px) {
+    header h1 { font-size: 1.9rem; }
+    p, li { text-align: left; }   /* на узком экране без выравнивания по ширине — без больших пробелов */
+    .dropdown { float: none; margin-bottom: 6px; }
+    .sidenav { float: none; width: 100%; border-radius: 0; text-align: center; }
+    .sidenav a { display: inline-block; border-left: none; }
+    .main-wrap { margin-left: 0 !important; }
+    .content, .parent { float: none !important; width: 100% !important; }
+    .content { padding: 16px 16px 20px !important; }
+    .content H1 { font-size: 22px !important; }
+    .parent { padding-left: 0 !important; margin-top: 18px; }
+    .facts section { float: none; width: 97%; }
+    .textcols-item { width: 96% !important; }
+    .card { padding: 20px 18px; margin: 0 12px 24px; }
+    table { width: 100%; }
+    td { padding: 6px 3px; font-size: 11px; }
+    tr:first-child td { font-size: 10px; letter-spacing: 0; }
+    td img { width: 56px; }
+    .film-card { padding: 14px 4px; margin: 0 8px 24px; }
+    .icon-bar a { font-size: 24px; }
+}

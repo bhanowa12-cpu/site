@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<HTML lang="ru">
+<!-- ТК1, задание 1: типовая структура HTML-документа — HTML, HEAD (служебная часть), TITLE (заголовок вкладки), BODY (содержимое) -->
+<HEAD>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Общая информация о группе The Beatles: название, страна, годы и состав группы.">
+  <TITLE>Общая информация</TITLE>
+  <link rel="icon" type="image/png" href="IMAGES/favicon.png">
+  <!-- ТК5, задание 1: подключение внешней таблицы стилей -->
+  <link rel="stylesheet" href="CSS/style.css">
+  <!-- шрифты (Google Fonts) и значки (Font Awesome) подключаются из интернета -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style type="text/css">
+    /* ТК5, задание 4: блоки участников группы (по два в ряд) */
+    .members { text-align: center; max-width: 1100px; margin: 0 auto; }
+    .textcols-item {
+      white-space: normal;
+      display: inline-block;
+      box-sizing: border-box;
+      width: 44%;
+      min-height: 190px;
+      margin: 12px 1.5%;
+      padding: 18px 20px;
+      border-width: 3px;
+      border-style: outset;
+      border-color: #E3B04B;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(31, 3, 66, 0.3);
+      vertical-align: top;
+      background: #380577;
+      background-image: linear-gradient(135deg, #4b0d8f, #1f0342);
+      text-align: left;
+    }
+    .textcols-item { transition: transform .25s, box-shadow .25s; }
+    .textcols-item:hover { transform: translateY(-5px); box-shadow: 0 16px 36px rgba(31, 3, 66, 0.4); }
+    .textcols-item h3 { color: #F5D98B; margin: 0 0 10px; font-size: 22px; }
+    .textcols-item p a { color: #fff; font-family: Inter, Arial, sans-serif; border-bottom: 1px dotted #E3B04B; }
+    .textcols-item p a:hover { color: #F5D98B; }
+    .textcols-item p { color: #EDE3FF; text-align: left; margin: 0; }
+    .textcols-item p b { color: #fff; font-size: 16px; }
+    IMG.fig {
+      float: left;           /* обтекание картинки по правому краю */
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      margin-right: 18px;
+      border-radius: 50%;
+      border: 3px solid #E3B04B;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    }
+    /* п. 9: разные формы фотографий участников */
+    IMG.oval   { border-radius: 50% / 38%; }
+    IMG.leaf   { border-radius: 0 60px 0 60px; }
+    IMG.square { border-radius: 18px; }
+    /* п. 10: разные формы блоков и рамок */
+    .shape2 { border-radius: 44px 8px; border-style: double; border-width: 5px; }
+    .shape3 { border-radius: 8px 44px; border-style: ridge; border-width: 5px; }
+    .shape4 { border-radius: 30px; border-style: solid; border-color: #F5D98B; }
+    .facts-list P { margin: 6px 0; }
+  </style>
+</HEAD>
+<BODY bgcolor="#F4EEFB">
+  <header>
+    <!-- Самостоятельная работа, задание 1.2: кнопка «Меню» со всплывающим списком (список появляется при наведении, правила .dropdown в style.css) -->
+    <div class="dropdown">
+      <button type="button" class="dropbtn"><i class="fa fa-bars"></i>Меню</button>
+      <div class="dropdown-content">
+        <a href="index.html">Главная</a>
+        <span>Общая информация</span>
+        <a href="History.html">История</a>
+        <a href="Film.html">Фильмография</a>
+        <a href="Disc.html">Дискография</a>
+        <a href="Links.html">Источники</a>
+        <a href="Shop.html">Заказать Альбом</a>
+        <a href="Contacts.html">Контакты</a>
+      </div>
+    </div>
+    <!-- ТК2: строка меню — ссылки на все страницы, кроме текущей. Самостоятельная работа, п. 2: шрифт и цвет строки задан атрибутом style -->
+    <p class="nav" align="center" style="font-family: Inter, Arial, sans-serif; color:#F5D98B">
+      <a href="index.html">Главная</a> |
+      <span class="current">Общая информация</span> |
+      <a href="History.html">История</a> |
+      <a href="Film.html">Фильмография</a> |
+      <a href="Disc.html">Дискография</a> |
+      <a href="Links.html">Источники</a> |
+      <a href="Shop.html">Заказать Альбом</a> |
+      <a href="Contacts.html">Контакты</a>
+    </p>
+    <H1 align=center><EM>Общая информация</EM></H1>
+  </header>
+  <!-- ТК5, задание 4: блок-панорама между шапкой и основной частью (оформление — #panorama в style.css) -->
+  <div id="panorama"><img src="IMAGES/panorama.jpg" alt="Панорама Ливерпуля"></div>
+  <main>
+    <!-- ТК3, задание 1: общая информация -->
+    <section class="card facts-list">
+      <P><strong>Название:</strong> "The Beatles" ("Битлз"; отдельно участников ансамбля называют "битлами")</P>
+      <P><strong>Страна:</strong> Великобритания (г. Ливерпуль)</P>
+      <P><strong>Годы:</strong> 1960-1970</P>
+    </section>
+    <!-- ТК5, задание 4: состав группы в блоках article; у фотографий разные формы (классы oval, leaf, square), у блоков — разные рамки (shape2, shape3, shape4) -->
+    <section class="members">
+      <h2><strong>Состав группы</strong> (те, кого весь мир знает как The Beatles):</h2>
+      <article class="textcols">
+        <article class="textcols-item">
+          <h3>1. Джон Леннон</h3>
+          <p><IMG src="IMAGES/lennon.jpg" alt="Джон Леннон" class="fig" width=120 height=120><b><a href="https://ru.wikipedia.org/wiki/Леннон,_Джон" target="_blank" title="Джон Леннон в Википедии">Джон Леннон</a></b><br>(ритм-гитара, соло-гитара, клавишные, бубен, маракасы, бас-гитара, губная гармоника, вокал)</p>
+        </article>
+        <article class="textcols-item shape2">
+          <h3>2. Пол Маккартни</h3>
+          <p><IMG src="IMAGES/mccartney.jpg" alt="Пол Маккартни" class="fig oval" width=120 height=120><b><a href="https://ru.wikipedia.org/wiki/Маккартни,_Пол" target="_blank" title="Пол Маккартни в Википедии">Пол Маккартни</a></b><br>(бас-гитара, клавишные, ударные, гитара, вокал)</p>
+        </article>
+        <article class="textcols-item shape3">
+          <h3>3. Джордж Харрисон</h3>
+          <p><IMG src="IMAGES/harrison.jpg" alt="Джордж Харрисон" class="fig leaf" width=120 height=120><b><a href="https://ru.wikipedia.org/wiki/Харрисон,_Джордж" target="_blank" title="Джордж Харрисон в Википедии">Джордж Харрисон</a></b><br>(соло-гитара, ритм-гитара, ситар, бубен, клавишные, вокал)</p>
+        </article>
+        <article class="textcols-item shape4">
+          <h3>4. Ринго Старр</h3>
+          <p><IMG src="IMAGES/starr.jpg" alt="Ринго Старр" class="fig square" width=120 height=120><b><a href="https://ru.wikipedia.org/wiki/Ринго_Старр" target="_blank" title="Ринго Старр в Википедии">Ринго Старр</a></b><br>(ударные, ритм-гитара, бубен, маракасы, коубелл, бонги, клавишные, вокал)</p>
+        </article>
+      </article>
+    </section>
+    <section class="card" style="margin-top: 28px;">
+      <P>Также в разное время в составе группы выступали:</P>
+      <!-- нумерованный список продолжается с номера 5 -->
+      <OL start="5">
+        <LI><A href="https://ru.wikipedia.org/wiki/Бест,_Пит" target="_blank">Пит Бест</A> (ударные, вокал)</LI>
+        <LI><A href="https://ru.wikipedia.org/wiki/Сатклифф,_Стюарт" target="_blank">Стюарт Сатклифф</A> (бас-гитара, вокал)</LI>
+        <LI><A href="https://ru.wikipedia.org/wiki/Никол,_Джимми" target="_blank">Джимми Никол</A> (ударные)</LI>
+      </OL>
+      <P>После распада группы, произошедшего в 1970 году, каждый из её участников начал сольную карьеру.</P>
+    </section>
+  </main>
+  <footer>
+    <!-- Самостоятельная работа, задание 2: панель значков -->
+    <div class="icon-bar">
+      <a href="index.html" title="Главная" aria-label="Главная"><i class="fa fa-home"></i></a>
+      <a href="Links.html" title="Источники" aria-label="Источники"><i class="fa fa-search"></i></a>
+      <a href="mailto:hanowa2024@mail.ru" title="Написать письмо" aria-label="Написать письмо"><i class="fa fa-envelope"></i></a>
+      <a href="https://ru.wikipedia.org/wiki/The_Beatles" target="_blank" title="The Beatles в Википедии" aria-label="The Beatles в Википедии"><i class="fa fa-globe"></i></a>
+      <a href="https://t.me/bh_108899" target="_blank" title="Telegram" aria-label="Telegram"><i class="fa fa-telegram"></i></a>
+    </div>
+    <!-- ТК1, задание 4: горизонтальная линия -->
+    <HR align=center width=50% size=1 color=green>
+    <!-- ТК1, задание 5: авторские права -->
+    <P align=center><FONT face=Arial size=1>&copy; Все права защищены. Б. Ханова, группа БЭР 2405. 2026.</FONT></P>
+  </footer>
+</BODY>
+</HTML>

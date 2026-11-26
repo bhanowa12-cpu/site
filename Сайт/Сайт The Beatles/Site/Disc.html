@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<HTML lang="ru">
+<!-- ТК1, задание 1: типовая структура HTML-документа — HTML, HEAD (служебная часть), TITLE (заголовок вкладки), BODY (содержимое) -->
+<HEAD>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Дискография The Beatles: 13 студийных альбомов со списками песен.">
+  <TITLE>Дискография</TITLE>
+  <link rel="icon" type="image/png" href="IMAGES/favicon.png">
+  <!-- ТК5, задание 1: подключение внешней таблицы стилей -->
+  <link rel="stylesheet" href="CSS/style.css">
+  <!-- шрифты (Google Fonts) и значки (Font Awesome) подключаются из интернета -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style type="text/css">
+    /* ТК5, задание 5: блоки с альбомами */
+    .inner-div {
+      width: 250px;
+      margin: 12px;
+      padding: 14px 14px 18px;
+      border-radius: 18px;
+      background-color: #380577;
+      background-image: linear-gradient(160deg, #4b0d8f, #1f0342);
+      box-shadow: 0 12px 28px rgba(31, 3, 66, 0.3);
+      transition: transform .25s, box-shadow .25s;
+      text-align: center;
+    }
+    .inner-div:hover { transform: translateY(-6px); box-shadow: 0 18px 36px rgba(31, 3, 66, 0.4); }
+    .inner-div { display: flex; flex-direction: column; }         /* кнопка всегда внизу блока */
+    .inner-div .button-style { margin-top: auto; align-self: center; }
+    .inner-div img { width: 100%; border-radius: 10px; display: block; }
+    .inner-div h3 { color: #F5D98B; margin: 12px 0 6px; font-size: 19px; }
+    .inner-div p { color: #EDE3FF; text-align: center; font-size: 14px; margin: 0 0 12px; }
+    /* список песен раскрывается по щелчку */
+    .tracks { margin: 0 0 14px; text-align: left; }
+    .tracks summary {
+      cursor: pointer;
+      color: #F5D98B;
+      font-family: Inter, Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+      list-style: none;
+      padding: 6px 0;
+      border-top: 1px solid rgba(245, 217, 139, 0.3);
+      border-bottom: 1px solid rgba(245, 217, 139, 0.3);
+    }
+    .tracks summary::-webkit-details-marker { display: none; }
+    .tracks summary::before { content: '♫ '; }
+    .tracks[open] summary { color: #fff; }
+    .tracks OL { margin: 10px 0 0; padding-left: 26px; }
+    .tracks LI { color: #EDE3FF; font-size: 13px; line-height: 1.55; text-align: left; hyphens: none; }
+    /* блоки выстраиваются по ширине страницы */
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: stretch;
+    }
+    .year {
+      text-align: center;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 34px;
+      color: #B8862B;
+      margin: 26px 0 4px;
+    }
+    .year::before { content: '— '; color: #d9c49a; }
+    .year::after { content: ' —'; color: #d9c49a; }
+    /* переход к нужному году (закладки, как в ТК3) */
+    .years { text-align: center; margin: 0 12px 6px; }
+    .years a {
+      display: inline-block;
+      margin: 4px;
+      padding: 7px 16px;
+      border-radius: 30px;
+      background: #380577;
+      color: #F5D98B;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background .2s, color .2s;
+    }
+    .years a:hover { background: #E3B04B; color: #1f0342; }
+    /* ссылки «Подробнее» и «Слушать» в блоке альбома */
+    .more { display: flex; justify-content: center; gap: 16px; margin: 0 0 14px; }
+    .more a { color: #EDE3FF; font-size: 13px; }
+    .more a:hover { color: #F5D98B; }
+    .more .fa { margin-right: 4px; color: #E3B04B; }
+  </style>
+</HEAD>
+<BODY bgcolor="#FBF3E4">
+  <header>
+    <!-- Самостоятельная работа, задание 1.2: кнопка «Меню» со всплывающим списком (список появляется при наведении, правила .dropdown в style.css) -->
+    <div class="dropdown">
+      <button type="button" class="dropbtn"><i class="fa fa-bars"></i>Меню</button>
+      <div class="dropdown-content">
+        <a href="index.html">Главная</a>
+        <a href="Info.html">Общая информация</a>
+        <a href="History.html">История</a>
+        <a href="Film.html">Фильмография</a>
+        <span>Дискография</span>
+        <a href="Links.html">Источники</a>
+        <a href="Shop.html">Заказать Альбом</a>
+        <a href="Contacts.html">Контакты</a>
+      </div>
+    </div>
+    <!-- ТК2: строка меню — ссылки на все страницы, кроме текущей. Самостоятельная работа, п. 2: шрифт и цвет строки задан атрибутом style -->
+    <p class="nav" align="center" style="font-family: Inter, Arial, sans-serif; color:#F5D98B">
+      <a href="index.html">Главная</a> |
+      <a href="Info.html">Общая информация</a> |
+      <a href="History.html">История</a> |
+      <a href="Film.html">Фильмография</a> |
+      <span class="current">Дискография</span> |
+      <a href="Links.html">Источники</a> |
+      <a href="Shop.html">Заказать Альбом</a> |
+      <a href="Contacts.html">Контакты</a>
+    </p>
+    <H1 align=center><EM>Дискография</EM></H1>
+  </header>
+  <!-- ТК5, задание 4: блок-панорама между шапкой и основной частью (оформление — #panorama в style.css) -->
+  <div id="panorama"><img src="IMAGES/panorama.jpg" alt="Панорама Ливерпуля"></div>
+  <main>
+    <!-- переход к нужному году: ссылки на закладки y1963…y1970 (как в ТК3) -->
+    <!-- под каждым годом flex-контейнер (.container): блоки альбомов (.inner-div) встают в ряд; details — список песен раскрывается по щелчку -->
+    <nav class="years">
+      <a href="#y1963">1963</a>
+      <a href="#y1964">1964</a>
+      <a href="#y1965">1965</a>
+      <a href="#y1966">1966</a>
+      <a href="#y1967">1967</a>
+      <a href="#y1968">1968</a>
+      <a href="#y1969">1969</a>
+      <a href="#y1970">1970</a>
+    </nav>
+    <P class="year">1963<A name="y1963"></A></P>
+    <div class="container">
+        <div class="inner-div">
+          <img src="IMAGES/album01.jpg" alt="Please Please Me" width=250 height=250 loading="lazy">
+          <h3>Please Please Me</h3>
+          <p>Первый альбом группы. Почти все песни записаны за один день — 11 февраля 1963 года.</p>
+          <details class="tracks">
+            <summary>Список песен (14)</summary>
+            <OL>
+              <LI>I Saw Her Standing There</LI>
+              <LI>Misery</LI>
+              <LI>Anna (Go to Him)</LI>
+              <LI>Chains</LI>
+              <LI>Boys</LI>
+              <LI>Ask Me Why</LI>
+              <LI>Please Please Me</LI>
+              <LI>Love Me Do</LI>
+              <LI>P.S. I Love You</LI>
+              <LI>Baby It's You</LI>
+              <LI>Do You Want to Know a Secret</LI>
+              <LI>A Taste of Honey</LI>
+              <LI>There's a Place</LI>
+              <LI>Twist and Shout</LI>
+            </OL>
+          </details>
+          <div class="more">
+            <a href="https://ru.wikipedia.org/wiki/Please_Please_Me_(альбом)" target="_blank"><i class="fa fa-wikipedia-w"></i>Подробнее</a>
+            <a href="https://music.yandex.ru/search?text=The%20Beatles%20Please%20Please%20Me" target="_blank"><i class="fa fa-headphones"></i>Слушать</a>
+          </div>
+          <a class="button-style" href="https://rus.hitmotop.com/get/music/20210228/The_Beatles_Full_Album_-_Please_Please_Me_1963_72812782.mp3">Скачать</a>
+        </div>
+        <div class="inner-div">
+          <img src="IMAGES/album02.jpg" alt="With The Beatles" width=250 height=250 loading="lazy">
+          <h3>With The Beatles</h3>
+          <p>Второй альбом. Знаменитая чёрно-белая фотография на обложке.</p>
+          <details class="tracks">
+            <summary>Список песен (14)</summary>
+            <OL>
+              <LI>It Won't Be Long</LI>
+              <LI>All I've Got to Do</LI>
+              <LI>All My Loving</LI>
+              <LI>Don't Bother Me</LI>
+              <LI>Little Child</LI>
+              <LI>Till There Was You</LI>
+              <LI>Please Mister Postman</LI>
+              <LI>Roll Over Beethoven</LI>
+              <LI>Hold Me Tight</LI>
+              <LI>You Really Got a Hold on Me</LI>
+              <LI>I Wanna Be Your Man</LI>
+              <LI>Devil in Her Heart</LI>
+              <LI>Not a Second Time</LI>
+              <LI>Money (That's What I Want)</LI>
+            </OL>
+          </details>
+          <div class="more">
+            <a href="https://ru.wikipedia.org/wiki/With_the_Beatles" target="_blank"><i class="fa fa-wikipedia-w"></i>Подробнее</a>
+            <a href="https://music.yandex.ru/search?text=The%20Beatles%20With%20The%20Beatles" target="_blank"><i class="fa fa-headphones"></i>Слушать</a>
+          </div>
+          <a class="button-style" href="https://rus.hitmotop.com/get/music/20191222/The_Beatles_-_With_The_Beatles_albom_67706612.mp3">Скачать</a>
+        </div>
+    </div>
+    <P class="year">1964<A name="y1964"></A></P>
+    <div class="container">
+        <div class="inner-div">
+          <img src="IMAGES/album03.jpg" alt="A Hard Day's Night" width=250 height=250 loading="lazy">
+          <h3>A Hard Day's Night</h3>
+          <p>Первый альбом, в котором все песни написаны Ленноном и Маккартни.</p>
+          <details class="tracks">
+            <summary>Список песен (13)</summary>
+            <OL>
+              <LI>A Hard Day's Night</LI>
+              <LI>I Should Have Known Better</LI>
+              <LI>If I Fell</LI>
+              <LI>I'm Happy Just to Dance with You</LI>
+              <LI>And I Love Her</LI>
+              <LI>Tell Me Why</LI>
+              <LI>Can't Buy Me Love</LI>
+              <LI>Any Time at All</LI>
+              <LI>I'll Cry Instead</LI>
+              <LI>Things We Said Today</LI>
+              <LI>When I Get Home</LI>
+              <LI>You Can't Do That</LI>
+              <LI>I'll Be Back</LI>
+            </OL>
+          </details>
+          <div class="more">
+            <a href="https://ru.wikipedia.org/wiki/A_Hard_Day’s_Night_(альбом)" target="_blank"><i class="fa fa-wikipedia-w"></i>Подробнее</a>
+            <a href="https://music.yandex.ru/search?text=The%20Beatles%20A%20Hard%20Day%27s%20Night" target="_blank"><i class="fa fa-headphones"></i>Слушать</a>
+          </div>
+        </div>
+        <div class="inner-div">
+          <img src="IMAGES/album04.jpg" alt="Beatles For Sale" width=250 height=250 loading="lazy">
+          <h3>Beatles For Sale</h3>
+          <p>Четвёртый альбом, записанный в перерывах между гастролями.</p>
+          <details class="tracks">
+            <summary>Список песен (14)</summary>
+            <OL>
+              <LI>No Reply</LI>
+              <LI>I'm a Loser</LI>
+              <LI>Baby's in Black</LI>
+              <LI>Rock and Roll Music</LI>
+              <LI>I'll Follow the Sun</LI>
+              <LI>Mr. Moonlight</LI>
+              <LI>Kansas City / Hey-Hey-Hey-Hey!</LI>
+              <LI>Eight Days a Week</LI>
+              <LI>Words of Love</LI>
+              <LI>Honey Don't</LI>
+              <LI>Every Little Thing</LI>
+              <LI>I Don't Want to Spoil the Party</LI>
+              <LI>What You're Doing</LI>
+              <LI>Everybody's Trying to Be My Baby</LI>
+            </OL>
+          </details>
+          <div class="more">
+            <a href="https://ru.wikipedia.org/wiki/Beatles_for_Sale" target="_blank"><i class="fa fa-wikipedia-w"></i>Подробнее</a>
+            <a href="https://music.yandex.ru/search?text=The%20Beatles%20Beatles%20For%20Sale" target="_blank"><i class="fa fa-headphones"></i>Слушать</a>
+          </div>
+          <a class="button-style" href="https://rus.hitmotop.com/get/music/20190331/The_Beatles_1964_-_Beatles_For_Sale_Full_Album_63188973.mp3">Скачать</a>
+        </div>
+    </div>
+    <P class="year">1965<A name="y1965"></A></P>
+    <div class="container">
+        <div class="inner-div">
+          <img src="IMAGES/album05.jpg" alt="Help!" width=250 height=250 loading="lazy">
+          <h3>Help!</h3>
+          <p>Песни из одноимённого фильма. Здесь вышла знаменитая «Yesterday».</p>
+          <details class="tracks">
+            <summary>Список песен (14)</summary>
+            <OL>
+              <LI>Help!</LI>
+              <LI>The Night Before</LI>
+              <LI>You've Got to Hide Your Love Away</LI>
+              <LI>I Need You</LI>
+              <LI>Another Girl</LI>
+              <LI>You're Going to Lose That Girl</LI>
+              <LI>Ticket to Ride</LI>
+              <LI>Act Naturally</LI>
+              <LI>It's Only Love</LI>
+              <LI>You Like Me Too Much</LI>
+              <LI>Tell Me What You See</LI>
+              <LI>I've Just Seen a Face</LI>
+              <LI>Yesterday</LI>
+              <LI>Dizzy Miss Lizzy</LI>
+            </OL>
+          </details>
+          <div class="more">
+            <a href="https://ru.wikipedia.org/wiki/Help!_(альбом)" target="_blank"><i class="fa fa-wikipedia-w"></i>Подробнее</a>
+            <a href="https://music.yandex.ru/search?text=The%20Beatles%20Help%21" target="_blank"><i class="fa fa-headphones"></i>Слушать</a>
+          </div>
+          <a class="button-style" href="https://rus.hitmotop.com/get/music/20170901/The_Beatles_-_Help_47950256.mp3">Скачать</a>
+        </div>
+        <div class="inner-div">
+          <img src="IMAGES/album06.jpg" alt="Rubber Soul" width=250 height=250 loading="lazy">
+          <h3>Rubber Soul</h3>
+          <p>В песне «Norwegian Wood» впервые звучит индийский ситар.</p>
+          <details class="tracks">
+            <summary>Список песен (14)</summary>
+            <OL>
+              <LI>Drive My Car</LI>
+              <LI>Norwegian Wood (This Bird Has Flown)</LI>
+              <LI>You Won't See Me</LI>
+              <LI>Nowhere Man</LI>
+              <LI>Think for Yourself</LI>
+              <LI>The Word</LI>
+              <LI>Michelle</LI>
+              <LI>What Goes On</LI>
+              <LI>Girl</LI>
+              <LI>I'm Looking Through You</LI>
+              <LI>In My Life</LI>
+              <LI>Wait</LI>
+              <LI>If I Needed Someone</LI>
+              <LI>Run for Your Life</LI>
+            </OL>
+          </details>
+          <div class="more">
+            <a href="https://ru.wikipedia.org/wiki/Rubber_Soul" target="_blank"><i class="fa fa-wikipedia-w"></i>Подробнее</a>
+            <a href="https://music.yandex.ru/search?text=The%20Beatles%20Rubber%20Soul" target="_blank"><i class="fa fa-headphones"></i>Слушать</a>
+          </div>
+          <a class="button-style" href="https://rus.hitmotop.com/get/music/20190903/The_Beatles_-_Rubber_Soul_Album_66400256.mp3">Скачать</a>
+        </div>
+    </div>
+    <P class="year">1966<A name="y1966"></A></P>
+    <div class="container">
+        <div class="inner-div">
+          <img src="IMAGES/album07.jpg" alt="Revolver" width=250 height=250 loading="lazy">
+          <h3>Revolver</h3>
+          <p>Альбом с песнями «Eleanor Rigby» и «Yellow Submarine».</p>
+          <details class="tracks">
+            <summary>Список песен (14)</summary>
+            <OL>
+              <LI>Taxman</LI>
+              <LI>Eleanor Rigby</LI>
+              <LI>I'm Only Sleeping</LI>
+              <LI>Love You To</LI>
+              <LI>Here, There and Everywhere</LI>
+              <LI>Yellow Submarine</LI>
+              <LI>She Said She Said</LI>
+              <LI>Good Day Sunshine</LI>
+              <LI>And Your Bird Can Sing</LI>
+              <LI>For No One</LI>
+              <LI>Doctor Robert</LI>
+              <LI>I Want to Tell You</LI>
+              <LI>Got to Get You into My Life</LI>
+              <LI>Tomorrow Never Knows</LI>
+            </OL>
+          </details>
+          <div class="more">
+            <a href="https://ru.wikipedia.org/wiki/Revolver" target="_blank"><i class="fa fa-wikipedia-w"></i>Подробнее</a>
+            <a href="https://music.yandex.ru/search?text=The%20Beatles%20Revolver" target="_blank"><i class="fa fa-headphones"></i>Слушать</a>
+          </div>
+        </div>
+    </div>
+    <P class="year">1967<A name="y1967"></A></P>
+    <div class="container">
+        <div class="inner-div">
+          <img src="IMAGES/album08.jpg" alt="Sgt. Pepper's Lonely Hearts Club Band" width=250 height=250 loading="lazy">
+          <h3>Sgt. Pepper's Lonely Hearts Club Band</h3>
+          <p>Один из первых концептуальных альбомов в истории рок-музыки.</p>
+          <details class="tracks">
+            <summary>Список песен (13)</summary>
+            <OL>
+              <LI>Sgt. Pepper's Lonely Hearts Club Band</LI>
+              <LI>With a Little Help from My Friends</LI>
+              <LI>Lucy in the Sky with Diamonds</LI>
+              <LI>Getting Better</LI>
+              <LI>Fixing a Hole</LI>
+              <LI>She's Leaving Home</LI>
+              <LI>Being for the Benefit of Mr. Kite!</LI>
+              <LI>Within You Without You</LI>
+              <LI>When I'm Sixty-Four</LI>
+              <LI>Lovely Rita</LI>
+              <LI>Good Morning Good Morning</LI>
+              <LI>Sgt. Pepper's Lonely Hearts Club Band (Reprise)</LI>
+              <LI>A Day in the Life</LI>
+            </OL>
+          </details>
+          <div class="more">
+            <a href="https://ru.wikipedia.org/wiki/Sgt._Pepper’s_Lonely_Hearts_Club_Band" target="_blank"><i class="fa fa-wikipedia-w"></i>Подробнее</a>
+            <a href="https://music.yandex.ru/search?text=The%20Beatles%20Sgt.%20Pepper%27s%20Lonely%20Hearts%20Club%20Band" target="_blank"><i class="fa fa-headphones"></i>Слушать</a>
+          </div>
+        </div>
+        <div class="inner-div">
+          <img src="IMAGES/album09.jpg" alt="Magical Mystery Tour" width=250 height=250 loading="lazy">
+          <h3>Magical Mystery Tour</h3>
+          <p>Песни из одноимённого телефильма.</p>
+          <details class="tracks">
+            <summary>Список песен (11)</summary>
+            <OL>
+              <LI>Magical Mystery Tour</LI>
+              <LI>The Fool on the Hill</LI>
+              <LI>Flying</LI>
+              <LI>Blue Jay Way</LI>
+              <LI>Your Mother Should Know</LI>
+              <LI>I Am the Walrus</LI>
+              <LI>Hello, Goodbye</LI>
+              <LI>Strawberry Fields Forever</LI>
+              <LI>Penny Lane</LI>
+              <LI>Baby, You're a Rich Man</LI>
+              <LI>All You Need Is Love</LI>
+            </OL>
+          </details>
+          <div class="more">
+            <a href="https://ru.wikipedia.org/wiki/Magical_Mystery_Tour_(альбом)" target="_blank"><i class="fa fa-wikipedia-w"></i>Подробнее</a>
+            <a href="https://music.yandex.ru/search?text=The%20Beatles%20Magical%20Mystery%20Tour" target="_blank"><i class="fa fa-headphones"></i>Слушать</a>
+          </div>
+        </div>
+    </div>
+    <P class="year">1968<A name="y1968"></A></P>
+    <div class="container">
+        <div class="inner-div">
+          <img src="IMAGES/album10.jpg" alt="The Beatles" width=250 height=250 loading="lazy">
+          <h3>The Beatles</h3>
+          <p>«Белый альбом» — двойной альбом из 30 песен.</p>
+          <details class="tracks">
+            <summary>Список песен (30)</summary>
+            <OL>
+              <LI>Back in the U.S.S.R.</LI>
+              <LI>Dear Prudence</LI>
+              <LI>Glass Onion</LI>
+              <LI>Ob-La-Di, Ob-La-Da</LI>
+              <LI>Wild Honey Pie</LI>
+              <LI>The Continuing Story of Bungalow Bill</LI>
+              <LI>While My Guitar Gently Weeps</LI>
+              <LI>Happiness Is a Warm Gun</LI>
+              <LI>Martha My Dear</LI>
+              <LI>I'm So Tired</LI>
+              <LI>Blackbird</LI>
+              <LI>Piggies</LI>
+              <LI>Rocky Raccoon</LI>
+              <LI>Don't Pass Me By</LI>
+              <LI>Why Don't We Do It in the Road?</LI>
+              <LI>I Will</LI>
+              <LI>Julia</LI>
+              <LI>Birthday</LI>
+              <LI>Yer Blues</LI>
+              <LI>Mother Nature's Son</LI>
+              <LI>Everybody's Got Something to Hide Except Me and My Monkey</LI>
+              <LI>Sexy Sadie</LI>
+              <LI>Helter Skelter</LI>
+              <LI>Long, Long, Long</LI>
+              <LI>Revolution 1</LI>
+              <LI>Honey Pie</LI>
+              <LI>Savoy Truffle</LI>
+              <LI>Cry Baby Cry</LI>
+              <LI>Revolution 9</LI>
+              <LI>Good Night</LI>
+            </OL>
+          </details>
+          <div class="more">
+            <a href="https://ru.wikipedia.org/wiki/The_Beatles_(альбом)" target="_blank"><i class="fa fa-wikipedia-w"></i>Подробнее</a>
+            <a href="https://music.yandex.ru/search?text=The%20Beatles%20The%20Beatles" target="_blank"><i class="fa fa-headphones"></i>Слушать</a>
+          </div>
+        </div>
+    </div>
+    <P class="year">1969<A name="y1969"></A></P>
+    <div class="container">
+        <div class="inner-div">
+          <img src="IMAGES/album11.jpg" alt="Yellow Submarine" width=250 height=250 loading="lazy">
+          <h3>Yellow Submarine</h3>
+          <p>Музыка к мультфильму «Жёлтая подводная лодка».</p>
+          <details class="tracks">
+            <summary>Список песен (13)</summary>
+            <OL>
+              <LI>Yellow Submarine</LI>
+              <LI>Only a Northern Song</LI>
+              <LI>All Together Now</LI>
+              <LI>Hey Bulldog</LI>
+              <LI>It's All Too Much</LI>
+              <LI>All You Need Is Love</LI>
+              <LI>Pepperland</LI>
+              <LI>Sea of Time</LI>
+              <LI>Sea of Holes</LI>
+              <LI>Sea of Monsters</LI>
+              <LI>March of the Meanies</LI>
+              <LI>Pepperland Laid Waste</LI>
+              <LI>Yellow Submarine in Pepperland</LI>
+            </OL>
+          </details>
+          <div class="more">
+            <a href="https://ru.wikipedia.org/wiki/Yellow_Submarine_(альбом)" target="_blank"><i class="fa fa-wikipedia-w"></i>Подробнее</a>
+            <a href="https://music.yandex.ru/search?text=The%20Beatles%20Yellow%20Submarine" target="_blank"><i class="fa fa-headphones"></i>Слушать</a>
+          </div>
+        </div>
+        <div class="inner-div">
+          <img src="IMAGES/album12.jpg" alt="Abbey Road" width=250 height=250 loading="lazy">
+          <h3>Abbey Road</h3>
+          <p>Последний альбом, записанный всеми участниками вместе.</p>
+          <details class="tracks">
+            <summary>Список песен (17)</summary>
+            <OL>
+              <LI>Come Together</LI>
+              <LI>Something</LI>
+              <LI>Maxwell's Silver Hammer</LI>
+              <LI>Oh! Darling</LI>
+              <LI>Octopus's Garden</LI>
+              <LI>I Want You (She's So Heavy)</LI>
+              <LI>Here Comes the Sun</LI>
+              <LI>Because</LI>
+              <LI>You Never Give Me Your Money</LI>
+              <LI>Sun King</LI>
+              <LI>Mean Mr. Mustard</LI>
+              <LI>Polythene Pam</LI>
+              <LI>She Came In Through the Bathroom Window</LI>
+              <LI>Golden Slumbers</LI>
+              <LI>Carry That Weight</LI>
+              <LI>The End</LI>
+              <LI>Her Majesty</LI>
+            </OL>
+          </details>
+          <div class="more">
+            <a href="https://ru.wikipedia.org/wiki/Abbey_Road" target="_blank"><i class="fa fa-wikipedia-w"></i>Подробнее</a>
+            <a href="https://music.yandex.ru/search?text=The%20Beatles%20Abbey%20Road" target="_blank"><i class="fa fa-headphones"></i>Слушать</a>
+          </div>
+        </div>
+    </div>
+    <P class="year">1970<A name="y1970"></A></P>
+    <div class="container">
+        <div class="inner-div">
+          <img src="IMAGES/album13.jpg" alt="Let It Be" width=250 height=250 loading="lazy">
+          <h3>Let It Be</h3>
+          <p>Последний выпущенный альбом группы.</p>
+          <details class="tracks">
+            <summary>Список песен (12)</summary>
+            <OL>
+              <LI>Two of Us</LI>
+              <LI>Dig a Pony</LI>
+              <LI>Across the Universe</LI>
+              <LI>I Me Mine</LI>
+              <LI>Dig It</LI>
+              <LI>Let It Be</LI>
+              <LI>Maggie Mae</LI>
+              <LI>I've Got a Feeling</LI>
+              <LI>One After 909</LI>
+              <LI>The Long and Winding Road</LI>
+              <LI>For You Blue</LI>
+              <LI>Get Back</LI>
+            </OL>
+          </details>
+          <div class="more">
+            <a href="https://ru.wikipedia.org/wiki/Let_It_Be_(альбом)" target="_blank"><i class="fa fa-wikipedia-w"></i>Подробнее</a>
+            <a href="https://music.yandex.ru/search?text=The%20Beatles%20Let%20It%20Be" target="_blank"><i class="fa fa-headphones"></i>Слушать</a>
+          </div>
+        </div>
+    </div>
+    <!-- кнопка «Наверх»: ссылка на начало страницы -->
+    <a href="#" class="to-top" title="Наверх" aria-label="Наверх"><i class="fa fa-arrow-up"></i></a>
+  </main>
+  <footer>
+    <!-- Самостоятельная работа, задание 2: панель значков -->
+    <div class="icon-bar">
+      <a href="index.html" title="Главная" aria-label="Главная"><i class="fa fa-home"></i></a>
+      <a href="Links.html" title="Источники" aria-label="Источники"><i class="fa fa-search"></i></a>
+      <a href="mailto:hanowa2024@mail.ru" title="Написать письмо" aria-label="Написать письмо"><i class="fa fa-envelope"></i></a>
+      <a href="https://ru.wikipedia.org/wiki/The_Beatles" target="_blank" title="The Beatles в Википедии" aria-label="The Beatles в Википедии"><i class="fa fa-globe"></i></a>
+      <a href="https://t.me/bh_108899" target="_blank" title="Telegram" aria-label="Telegram"><i class="fa fa-telegram"></i></a>
+    </div>
+    <!-- ТК1, задание 4: горизонтальная линия -->
+    <HR align=center width=50% size=1 color=green>
+    <!-- ТК1, задание 5: авторские права -->
+    <P align=center><FONT face=Arial size=1>&copy; Все права защищены. Б. Ханова, группа БЭР 2405. 2026.</FONT></P>
+  </footer>
+</BODY>
+</HTML>

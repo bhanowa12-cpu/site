@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<HTML lang="ru">
+<!-- ТК1, задание 1: типовая структура HTML-документа — HTML, HEAD (служебная часть), TITLE (заголовок вкладки), BODY (содержимое) -->
+<HEAD>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Фильмография группы The Beatles: художественные, мультипликационный и документальный фильмы.">
+  <TITLE>Фильмография</TITLE>
+  <link rel="icon" type="image/png" href="IMAGES/favicon.png">
+  <!-- ТК5, задание 1: подключение внешней таблицы стилей -->
+  <link rel="stylesheet" href="CSS/style.css">
+  <!-- шрифты (Google Fonts) и значки (Font Awesome) подключаются из интернета -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</HEAD>
+<BODY bgcolor="#EEF1F7">
+  <header>
+    <!-- Самостоятельная работа, задание 1.2: кнопка «Меню» со всплывающим списком (список появляется при наведении, правила .dropdown в style.css) -->
+    <div class="dropdown">
+      <button type="button" class="dropbtn"><i class="fa fa-bars"></i>Меню</button>
+      <div class="dropdown-content">
+        <a href="index.html">Главная</a>
+        <a href="Info.html">Общая информация</a>
+        <a href="History.html">История</a>
+        <span>Фильмография</span>
+        <a href="Disc.html">Дискография</a>
+        <a href="Links.html">Источники</a>
+        <a href="Shop.html">Заказать Альбом</a>
+        <a href="Contacts.html">Контакты</a>
+      </div>
+    </div>
+    <!-- ТК2: строка меню — ссылки на все страницы, кроме текущей. Самостоятельная работа, п. 2: шрифт и цвет строки задан атрибутом style -->
+    <p class="nav" align="center" style="font-family: Inter, Arial, sans-serif; color:#F5D98B">
+      <a href="index.html">Главная</a> |
+      <a href="Info.html">Общая информация</a> |
+      <a href="History.html">История</a> |
+      <span class="current">Фильмография</span> |
+      <a href="Disc.html">Дискография</a> |
+      <a href="Links.html">Источники</a> |
+      <a href="Shop.html">Заказать Альбом</a> |
+      <a href="Contacts.html">Контакты</a>
+    </p>
+    <H1 align=center><EM>Фильмография</EM></H1>
+  </header>
+  <!-- ТК5, задание 4: блок-панорама между шапкой и основной частью (оформление — #panorama в style.css) -->
+  <div id="panorama"><img src="IMAGES/panorama.jpg" alt="Панорама Ливерпуля"></div>
+  <main>
+    <section class="card film-card" id="films" style="max-width: 1000px;">
+      <!-- ТК4, задание 1: таблица -->
+      <div class="table-wrap">
+      <TABLE border=1 align=center>
+        <TR align=center> <TD> Год <TD> Русское название <TD> Оригинальное название <TD> Афиша <TD> Примечание </TR>
+        <TR align=center> <TD> 1964 <TD> <A href="https://ru.wikipedia.org/wiki/Вечер_трудного_дня_(фильм)" target="_blank">Вечер трудного дня</A> <TD> <EM>A Hard Day's Night</EM> <TD> <A href="#poster1" class="zoom" title="Увеличить афишу"><IMG src="IMAGES/Film1.jpg" width=150 alt="Афиша: A Hard Day's Night" loading="lazy"></A> <TD> Х/ф </TR>
+        <TR align=center> <TD> 1965 <TD> <A href="https://ru.wikipedia.org/wiki/На_помощь!_(фильм,_1965)" target="_blank">На помощь!</A> <TD> <EM>Help!</EM> <TD> <A href="#poster2" class="zoom" title="Увеличить афишу"><IMG src="IMAGES/Film2.jpg" width=150 alt="Афиша: Help!" loading="lazy"></A> <TD> Х/ф </TR>
+        <TR align=center> <TD> 1967 <TD> <A href="https://ru.wikipedia.org/wiki/Волшебное_таинственное_путешествие_(фильм)" target="_blank">Волшебное таинственное путешествие</A> <TD> <EM>Magical Mystery Tour</EM> <TD> <A href="#poster3" class="zoom" title="Увеличить афишу"><IMG src="IMAGES/Film3.jpg" width=150 alt="Афиша: Magical Mystery Tour" loading="lazy"></A> <TD> Х/ф </TR>
+        <TR align=center> <TD> 1968 <TD> <A href="https://ru.wikipedia.org/wiki/Жёлтая_подводная_лодка_(мультфильм)" target="_blank">Жёлтая подводная лодка</A> <TD> <EM>Yellow Submarine</EM> <TD> <A href="#poster4" class="zoom" title="Увеличить афишу"><IMG src="IMAGES/Film4.jpg" width=150 alt="Афиша: Yellow Submarine" loading="lazy"></A> <TD> М/ф </TR>
+        <TR align=center> <TD> 1970 <TD> <A href="https://ru.wikipedia.org/wiki/Пусть_будет_так_(фильм)" target="_blank">Пусть будет так</A> <TD> <EM>Let It Be</EM> <TD> <A href="#poster5" class="zoom" title="Увеличить афишу"><IMG src="IMAGES/Film5.jpg" width=150 alt="Афиша: Let It Be" loading="lazy"></A> <TD> Д/ф </TR>
+      </TABLE>
+      </div>
+      <P align=center style="text-align:center; font-size:13px; margin-top:18px;">Х/ф — художественный фильм, М/ф — мультипликационный фильм, Д/ф — документальный фильм. Щёлкните по афише, чтобы увеличить её.</P>
+    </section>
+    <!-- увеличенные афиши: блок показывается, когда на него ведёт ссылка (#poster1…#poster5) — правило .lightbox:target в style.css -->
+    <div class="lightbox" id="poster1">
+      <a href="#films" class="lightbox-bg" aria-label="Закрыть"></a>
+      <figure><IMG src="IMAGES/Film1.jpg" alt="Афиша: A Hard Day's Night"><figcaption>«Вечер трудного дня» (A Hard Day's Night), 1964</figcaption></figure>
+      <a href="#films" class="lightbox-close" aria-label="Закрыть">&times;</a>
+    </div>
+    <div class="lightbox" id="poster2">
+      <a href="#films" class="lightbox-bg" aria-label="Закрыть"></a>
+      <figure><IMG src="IMAGES/Film2.jpg" alt="Афиша: Help!"><figcaption>«На помощь!» (Help!), 1965</figcaption></figure>
+      <a href="#films" class="lightbox-close" aria-label="Закрыть">&times;</a>
+    </div>
+    <div class="lightbox" id="poster3">
+      <a href="#films" class="lightbox-bg" aria-label="Закрыть"></a>
+      <figure><IMG src="IMAGES/Film3.jpg" alt="Афиша: Magical Mystery Tour"><figcaption>«Волшебное таинственное путешествие» (Magical Mystery Tour), 1967</figcaption></figure>
+      <a href="#films" class="lightbox-close" aria-label="Закрыть">&times;</a>
+    </div>
+    <div class="lightbox" id="poster4">
+      <a href="#films" class="lightbox-bg" aria-label="Закрыть"></a>
+      <figure><IMG src="IMAGES/Film4.jpg" alt="Афиша: Yellow Submarine"><figcaption>«Жёлтая подводная лодка» (Yellow Submarine), 1968</figcaption></figure>
+      <a href="#films" class="lightbox-close" aria-label="Закрыть">&times;</a>
+    </div>
+    <div class="lightbox" id="poster5">
+      <a href="#films" class="lightbox-bg" aria-label="Закрыть"></a>
+      <figure><IMG src="IMAGES/Film5.jpg" alt="Афиша: Let It Be"><figcaption>«Пусть будет так» (Let It Be), 1970</figcaption></figure>
+      <a href="#films" class="lightbox-close" aria-label="Закрыть">&times;</a>
+    </div>
+  </main>
+  <footer>
+    <!-- Самостоятельная работа, задание 2: панель значков -->
+    <div class="icon-bar">
+      <a href="index.html" title="Главная" aria-label="Главная"><i class="fa fa-home"></i></a>
+      <a href="Links.html" title="Источники" aria-label="Источники"><i class="fa fa-search"></i></a>
+      <a href="mailto:hanowa2024@mail.ru" title="Написать письмо" aria-label="Написать письмо"><i class="fa fa-envelope"></i></a>
+      <a href="https://ru.wikipedia.org/wiki/The_Beatles" target="_blank" title="The Beatles в Википедии" aria-label="The Beatles в Википедии"><i class="fa fa-globe"></i></a>
+      <a href="https://t.me/bh_108899" target="_blank" title="Telegram" aria-label="Telegram"><i class="fa fa-telegram"></i></a>
+    </div>
+    <!-- ТК1, задание 4: горизонтальная линия -->
+    <HR align=center width=50% size=1 color=green>
+    <!-- ТК1, задание 5: авторские права -->
+    <P align=center><FONT face=Arial size=1>&copy; Все права защищены. Б. Ханова, группа БЭР 2405. 2026.</FONT></P>
+  </footer>
+</BODY>
+</HTML>

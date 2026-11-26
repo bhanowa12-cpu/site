@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<HTML lang="ru">
+<!-- ТК1, задание 1: типовая структура HTML-документа — HTML, HEAD (служебная часть), TITLE (заголовок вкладки), BODY (содержимое) -->
+<HEAD>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="История группы The Beatles с 1956 по 1970 год.">
+  <TITLE>История</TITLE>
+  <link rel="icon" type="image/png" href="IMAGES/favicon.png">
+  <!-- ТК5, задание 1: подключение внешней таблицы стилей -->
+  <link rel="stylesheet" href="CSS/style.css">
+  <!-- шрифты (Google Fonts) и значки (Font Awesome) подключаются из интернета -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style type="text/css">
+    .toc UL { columns: 2; list-style: none; padding: 0; }
+    .toc LI { margin: 0; padding: 4px 0; break-inside: avoid; }
+    .toc LI A::before { content: '♪ '; color: #B8862B; }   /* нота перед пунктом */
+    .chapter STRONG {
+      display: block;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 22px;
+      letter-spacing: 1px;
+      color: #380577;
+      border-bottom: 2px solid #E3B04B;
+      padding-bottom: 8px;
+      margin-bottom: 6px;
+    }
+    .up A { font-size: 13px; }
+    .up A::before { content: '↑ '; }
+    .chapter { display: flow-root; }            /* блок растягивается под картинку с float */
+    /* картинка справа, текст обтекает её слева */
+    .fig-right { float: right; width: 190px; margin: 6px 0 12px 26px; text-align: center; }
+    .fig-right IMG {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      border: 1px solid #e6dcf0;
+      box-shadow: 0 8px 20px rgba(31, 3, 66, 0.25);
+    }
+    .fig-right figcaption { font-family: Inter, Arial, sans-serif; font-size: 12px; color: #6b5a80; margin-top: 6px; }
+    @media (max-width: 800px) {
+      .toc UL { columns: 1; }
+      .fig-right { float: none; width: 62%; margin: 4px auto 14px; }
+    }
+  </style>
+</HEAD>
+<BODY bgcolor="#F3F0E8">
+  <header>
+    <!-- ТК2: строка меню — ссылки на все страницы, кроме текущей. Самостоятельная работа, п. 2: шрифт и цвет строки задан атрибутом style -->
+    <p class="nav" align="center" style="font-family: Inter, Arial, sans-serif; color:#F5D98B">
+      <a href="index.html">Главная</a> |
+      <a href="Info.html">Общая информация</a> |
+      <span class="current">История</span> |
+      <a href="Film.html">Фильмография</a> |
+      <a href="Disc.html">Дискография</a> |
+      <a href="Links.html">Источники</a> |
+      <a href="Shop.html">Заказать Альбом</a> |
+      <a href="Contacts.html">Контакты</a>
+    </p>
+    <!-- закладка top: сюда ведут ссылки «Содержание» внизу каждого раздела -->
+    <H1 align=center><EM>История группы <A name=top></A></EM></H1>
+  </header>
+  <!-- Самостоятельная работа, задание 1.3: меню горизонтальной прокрутки -->
+  <div class="scrollmenu">
+    <a href="index.html">Главная</a>
+    <a href="Info.html">Общая информация</a>
+    <span>История</span>
+    <a href="Film.html">Фильмография</a>
+    <a href="Disc.html">Дискография</a>
+    <a href="Links.html">Источники</a>
+    <a href="Shop.html">Заказать Альбом</a>
+    <a href="Contacts.html">Контакты</a>
+  </div>
+  <!-- ТК5, задание 4: блок-панорама между шапкой и основной частью (оформление — #panorama в style.css) -->
+  <div id="panorama"><img src="IMAGES/panorama.jpg" alt="Панорама Ливерпуля"></div>
+  <main>
+    <!-- ТК3, задание 2: маркированный список со ссылками на закладки -->
+    <section class="card toc">
+      <H2><FONT color="#2E7D32">Содержание</FONT></H2>
+      <UL>
+        <LI><A href=#c1>Начало</A></LI>
+        <LI><A href=#c2>Название</A></LI>
+        <LI><A href=#c3>Первые гастроли</A></LI>
+        <LI><A href=#c4>Первый контракт</A></LI>
+        <LI><A href=#c5>"Белый альбом"</A></LI>
+        <LI><A href=#c6>Последние альбомы и распад</A></LI>
+      </UL>
+    </section>
+    <!-- раздел: заголовок с закладкой (A name), картинка справа с обтеканием (float: right) и ссылка наверх -->
+    <section class="card chapter">
+      <STRONG>НАЧАЛО (1956—1960) <A name=c1></A></STRONG>
+      <figure class="fig-right"><IMG src="IMAGES/lennon.jpg" alt="Джон Леннон, 1964" loading="lazy"><figcaption>Джон Леннон, 1964</figcaption></figure>
+      <P align=justify>Весной 1956 года Джон Леннон вместе с товарищами по школе основал группу «The Blackjacks», через неделю переименованную в «The Quarrymen» — по названию школы, в которой они учились. Летом 1957 года Леннон познакомился с 15-летним Полом Маккартни, и вскоре Пол вошёл в состав группы.</P>
+      <P align=justify>В начале 1958 года Маккартни привёл в группу своего младшего друга Джорджа Харрисона. Именно эти трое стали основой будущих The Beatles. В 1960 году к ним присоединился друг Леннона по художественному колледжу Стюарт Сатклифф, который стал играть на бас-гитаре.</P>
+      <P class="up"><A href=#top>Содержание</A></P>
+    </section>
+    <!-- раздел: заголовок с закладкой (A name), картинка справа с обтеканием (float: right) и ссылка наверх -->
+    <section class="card chapter">
+      <STRONG>НАЗВАНИЕ <A name=c2></A></STRONG>
+      <figure class="fig-right"><IMG src="beatles.jpg" alt="The Beatles, 1965" loading="lazy"><figcaption>The Beatles, 1965</figcaption></figure>
+      <P align=justify>Группа несколько раз меняла название: «Johnny and the Moondogs», «The Silver Beetles» и, наконец, в августе 1960 года — «The Beatles». Название придумали по примеру американской группы «The Crickets» («Сверчки»): слово beetles означает «жуки», а буквы «ea» напоминают о стиле музыки «бит» (beat).</P>
+      <P class="up"><A href=#top>Содержание</A></P>
+    </section>
+    <!-- раздел: заголовок с закладкой (A name), картинка справа с обтеканием (float: right) и ссылка наверх -->
+    <section class="card chapter">
+      <STRONG>ПЕРВЫЕ ГАСТРОЛИ <A name=c3></A></STRONG>
+      <P align=justify>В августе 1960 года группа с новым барабанщиком Питом Бестом впервые отправилась в Гамбург (Германия). Музыканты выступали в клубах почти каждый вечер по несколько часов подряд — так они научились держаться на сцене и хорошо сыгрались.</P>
+      <P align=justify>Вернувшись в Ливерпуль, The Beatles с 1961 года постоянно выступали в клубе «Каверн». За два с половиной года они сыграли там почти 300 концертов и стали самой известной группой города.</P>
+      <P class="up"><A href=#top>Содержание</A></P>
+    </section>
+    <!-- раздел: заголовок с закладкой (A name), картинка справа с обтеканием (float: right) и ссылка наверх -->
+    <section class="card chapter">
+      <STRONG>ПЕРВЫЙ КОНТРАКТ <A name=c4></A></STRONG>
+      <figure class="fig-right"><IMG src="IMAGES/album01.jpg" alt="Please Please Me, 1963" loading="lazy"><figcaption>Please Please Me, 1963</figcaption></figure>
+      <P align=justify>В конце 1961 года менеджером группы стал владелец музыкального магазина Брайан Эпстайн. В 1962 году продюсер Джордж Мартин подписал с The Beatles контракт со студией звукозаписи Parlophone (компания EMI). Летом того же года место барабанщика занял Ринго Старр.</P>
+      <P align=justify>В октябре 1962 года вышел первый сингл «Love Me Do», а уже в 1963 году в Великобритании началась «битломания». В феврале 1964 года выступление группы на американском телевидении посмотрели около 73 миллионов зрителей.</P>
+      <P class="up"><A href=#top>Содержание</A></P>
+    </section>
+    <!-- раздел: заголовок с закладкой (A name), картинка справа с обтеканием (float: right) и ссылка наверх -->
+    <section class="card chapter">
+      <STRONG>«БЕЛЫЙ АЛЬБОМ» <A name=c5></A></STRONG>
+      <figure class="fig-right"><IMG src="IMAGES/album10.jpg" alt="«Белый альбом», 1968" loading="lazy"><figcaption>«Белый альбом», 1968</figcaption></figure>
+      <P align=justify>В 1968 году группа выпустила двойной альбом «The Beatles», который из-за полностью белой обложки называют «Белым альбомом». В него вошли 30 песен, многие из которых были написаны во время поездки музыкантов в Индию весной 1968 года. В том же году участники основали собственную компанию Apple.</P>
+      <P class="up"><A href=#top>Содержание</A></P>
+    </section>
+    <!-- раздел: заголовок с закладкой (A name), картинка справа с обтеканием (float: right) и ссылка наверх -->
+    <section class="card chapter">
+      <STRONG>ПОСЛЕДНИЕ АЛЬБОМЫ И РАСПАД <A name=c6></A></STRONG>
+      <figure class="fig-right"><IMG src="IMAGES/album12.jpg" alt="Abbey Road, 1969" loading="lazy"><figcaption>Abbey Road, 1969</figcaption></figure>
+      <P align=justify>В 1969 году вышел альбом «Abbey Road» — последний, который музыканты записали все вместе. Его обложка, на которой четверо участников переходят улицу по пешеходному переходу, стала одной из самых известных в истории музыки.</P>
+      <P align=justify>В апреле 1970 года Пол Маккартни объявил, что покидает группу. В мае того же года вышел последний альбом «Let It Be». После распада каждый из участников начал сольную карьеру, а песни The Beatles до сих пор слушают во всём мире.</P>
+      <P class="up"><A href=#top>Содержание</A></P>
+    </section>
+    <!-- кнопка «Наверх»: ссылка на закладку top -->
+    <a href="#top" class="to-top" title="Наверх" aria-label="Наверх"><i class="fa fa-arrow-up"></i></a>
+  </main>
+  <footer>
+    <!-- Самостоятельная работа, задание 2: панель значков -->
+    <div class="icon-bar">
+      <a href="index.html" title="Главная" aria-label="Главная"><i class="fa fa-home"></i></a>
+      <a href="Links.html" title="Источники" aria-label="Источники"><i class="fa fa-search"></i></a>
+      <a href="mailto:hanowa2024@mail.ru" title="Написать письмо" aria-label="Написать письмо"><i class="fa fa-envelope"></i></a>
+      <a href="https://ru.wikipedia.org/wiki/The_Beatles" target="_blank" title="The Beatles в Википедии" aria-label="The Beatles в Википедии"><i class="fa fa-globe"></i></a>
+      <a href="https://t.me/bh_108899" target="_blank" title="Telegram" aria-label="Telegram"><i class="fa fa-telegram"></i></a>
+    </div>
+    <!-- ТК1, задание 4: горизонтальная линия -->
+    <HR align=center width=50% size=1 color=green>
+    <!-- ТК1, задание 5: авторские права -->
+    <P align=center><FONT face=Arial size=1>&copy; Все права защищены. Б. Ханова, группа БЭР 2405. 2026.</FONT></P>
+  </footer>
+</BODY>
+</HTML>

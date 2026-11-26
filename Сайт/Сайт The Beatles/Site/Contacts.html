@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<HTML lang="ru">
+<!-- ТК1, задание 1: типовая структура HTML-документа — HTML, HEAD (служебная часть), TITLE (заголовок вкладки), BODY (содержимое) -->
+<HEAD>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Контакты: почта, Telegram и карта.">
+  <TITLE>Контакты</TITLE>
+  <link rel="icon" type="image/png" href="IMAGES/favicon.png">
+  <!-- ТК5, задание 1: подключение внешней таблицы стилей -->
+  <link rel="stylesheet" href="CSS/style.css">
+  <!-- шрифты (Google Fonts) и значки (Font Awesome) подключаются из интернета -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style type="text/css">
+    .contact-row { overflow: hidden; }
+    .contact-row section { float: left; width: 47%; margin: 0 1.5% 20px; text-align: center; }
+    .contact-row h3 { margin: 0 0 6px; }
+    .contact-row a { font-size: 17px; font-weight: 600; }
+    .map { border-radius: 14px; overflow: hidden; box-shadow: 0 10px 24px rgba(31, 3, 66, 0.2); }
+    @media (max-width: 800px) { .contact-row section { float: none; width: 97%; } }
+  </style>
+</HEAD>
+<BODY bgcolor="#EAF3F8">
+  <header>
+    <!-- Самостоятельная работа, задание 1.2: кнопка «Меню» со всплывающим списком (список появляется при наведении, правила .dropdown в style.css) -->
+    <div class="dropdown">
+      <button type="button" class="dropbtn"><i class="fa fa-bars"></i>Меню</button>
+      <div class="dropdown-content">
+        <a href="index.html">Главная</a>
+        <a href="Info.html">Общая информация</a>
+        <a href="History.html">История</a>
+        <a href="Film.html">Фильмография</a>
+        <a href="Disc.html">Дискография</a>
+        <a href="Links.html">Источники</a>
+        <a href="Shop.html">Заказать Альбом</a>
+        <span>Контакты</span>
+      </div>
+    </div>
+    <!-- ТК2: строка меню — ссылки на все страницы, кроме текущей. Самостоятельная работа, п. 2: шрифт и цвет строки задан атрибутом style -->
+    <p class="nav" align="center" style="font-family: Inter, Arial, sans-serif; color:#F5D98B">
+      <a href="index.html">Главная</a> |
+      <a href="Info.html">Общая информация</a> |
+      <a href="History.html">История</a> |
+      <a href="Film.html">Фильмография</a> |
+      <a href="Disc.html">Дискография</a> |
+      <a href="Links.html">Источники</a> |
+      <a href="Shop.html">Заказать Альбом</a> |
+      <span class="current">Контакты</span>
+    </p>
+    <H1 align=center><EM>Контакты</EM></H1>
+  </header>
+  <!-- ТК5, задание 4: блок-панорама между шапкой и основной частью (оформление — #panorama в style.css) -->
+  <div id="panorama"><img src="IMAGES/panorama.jpg" alt="Панорама Ливерпуля"></div>
+  <main>
+    <section class="card">
+      <!-- Самостоятельная работа, п. 5: ссылка mailto: открывает почту, ссылка t.me — Telegram, карта Яндекса вставлена тегом iframe -->
+      <div class="contact-row">
+        <section>
+          <h3>Наша почта</h3>
+          <a href="mailto:hanowa2024@mail.ru?subject=The Beatles&body=Здравствуйте!"><i class="fa fa-envelope"></i> hanowa2024@mail.ru</a>
+        </section>
+        <section>
+          <h3>Мы в Telegram</h3>
+          <a href="https://t.me/bh_108899" target="_blank"><i class="fa fa-telegram"></i> @bh_108899</a>
+        </section>
+      </div>
+      <h3 style="text-align:center">Клуб «Каверн», Ливерпуль — здесь начиналась история The Beatles</h3>
+      <div class="map">
+        <iframe src="https://yandex.ru/map-widget/v1/?ll=-2.987784%2C53.406213&z=16&pt=-2.987784%2C53.406213%2Cpm2rdm" width="100%" height="420" frameborder="0" allowfullscreen="true" style="display:block;"></iframe>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <!-- Самостоятельная работа, задание 2: панель значков -->
+    <div class="icon-bar">
+      <a href="index.html" title="Главная" aria-label="Главная"><i class="fa fa-home"></i></a>
+      <a href="Links.html" title="Источники" aria-label="Источники"><i class="fa fa-search"></i></a>
+      <a href="mailto:hanowa2024@mail.ru" title="Написать письмо" aria-label="Написать письмо"><i class="fa fa-envelope"></i></a>
+      <a href="https://ru.wikipedia.org/wiki/The_Beatles" target="_blank" title="The Beatles в Википедии" aria-label="The Beatles в Википедии"><i class="fa fa-globe"></i></a>
+      <a href="https://t.me/bh_108899" target="_blank" title="Telegram" aria-label="Telegram"><i class="fa fa-telegram"></i></a>
+    </div>
+    <!-- ТК1, задание 4: горизонтальная линия -->
+    <HR align=center width=50% size=1 color=green>
+    <!-- ТК1, задание 5: авторские права -->
+    <P align=center><FONT face=Arial size=1>&copy; Все права защищены. Б. Ханова, группа БЭР 2405. 2026.</FONT></P>
+  </footer>
+</BODY>
+</HTML>

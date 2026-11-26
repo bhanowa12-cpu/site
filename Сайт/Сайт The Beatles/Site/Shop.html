@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<HTML lang="ru">
+<!-- ТК1, задание 1: типовая структура HTML-документа — HTML, HEAD (служебная часть), TITLE (заголовок вкладки), BODY (содержимое) -->
+<HEAD>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Заказать альбом группы The Beatles.">
+  <TITLE>Заказать Альбом</TITLE>
+  <link rel="icon" type="image/png" href="IMAGES/favicon.png">
+  <!-- ТК5, задание 1: подключение внешней таблицы стилей -->
+  <link rel="stylesheet" href="CSS/style.css">
+  <!-- шрифты (Google Fonts) и значки (Font Awesome) подключаются из интернета -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style type="text/css">
+    /* витрина: самые известные альбомы */
+    .showcase { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; margin: 10px 0 26px; }
+    .showcase figure { margin: 0; width: 170px; }
+    .showcase img {
+      width: 170px;
+      height: 170px;
+      border-radius: 12px;
+      box-shadow: 0 10px 24px rgba(31, 3, 66, 0.3);
+      transition: transform .25s;
+    }
+    .showcase img:hover { transform: scale(1.05) rotate(-1deg); }
+    .showcase figcaption { font-family: Inter, Arial, sans-serif; font-size: 13px; color: #380577; margin-top: 8px; }
+  </style>
+</HEAD>
+<BODY bgcolor="#FBEFF1">
+  <header>
+    <!-- Самостоятельная работа, задание 1.2: кнопка «Меню» со всплывающим списком (список появляется при наведении, правила .dropdown в style.css) -->
+    <div class="dropdown">
+      <button type="button" class="dropbtn"><i class="fa fa-bars"></i>Меню</button>
+      <div class="dropdown-content">
+        <a href="index.html">Главная</a>
+        <a href="Info.html">Общая информация</a>
+        <a href="History.html">История</a>
+        <a href="Film.html">Фильмография</a>
+        <a href="Disc.html">Дискография</a>
+        <a href="Links.html">Источники</a>
+        <span>Заказать Альбом</span>
+        <a href="Contacts.html">Контакты</a>
+      </div>
+    </div>
+    <!-- ТК2: строка меню — ссылки на все страницы, кроме текущей. Самостоятельная работа, п. 2: шрифт и цвет строки задан атрибутом style -->
+    <p class="nav" align="center" style="font-family: Inter, Arial, sans-serif; color:#F5D98B">
+      <a href="index.html">Главная</a> |
+      <a href="Info.html">Общая информация</a> |
+      <a href="History.html">История</a> |
+      <a href="Film.html">Фильмография</a> |
+      <a href="Disc.html">Дискография</a> |
+      <a href="Links.html">Источники</a> |
+      <span class="current">Заказать Альбом</span> |
+      <a href="Contacts.html">Контакты</a>
+    </p>
+    <H1 align=center><EM>Заказать Альбом</EM></H1>
+  </header>
+  <!-- ТК5, задание 4: блок-панорама между шапкой и основной частью (оформление — #panorama в style.css) -->
+  <div id="panorama"><img src="IMAGES/panorama.jpg" alt="Панорама Ливерпуля"></div>
+  <main>
+    <section class="card" style="text-align:center;">
+      <h2>Закажите альбом The Beatles</h2>
+      <P align=center style="text-align:center">Выберите альбом, заполните форму — и мы свяжемся с вами, чтобы уточнить детали заказа.</P>
+      <div class="showcase">
+        <figure><img src="IMAGES/album12.jpg" alt="Abbey Road"><figcaption>Abbey Road</figcaption></figure>
+        <figure><img src="IMAGES/album08.jpg" alt="Sgt. Pepper's"><figcaption>Sgt. Pepper's</figcaption></figure>
+        <figure><img src="IMAGES/album07.jpg" alt="Revolver"><figcaption>Revolver</figcaption></figure>
+        <figure><img src="IMAGES/album13.jpg" alt="Let It Be"><figcaption>Let It Be</figcaption></figure>
+      </div>
+      <!-- Самостоятельная работа, п. 4: форма заказа Google Forms вставлена тегом iframe (окно с другой страницей внутри нашей) -->
+      <center>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeXiHX9KZyFFQpqmVy2GKFbMjvsBsEr0MTZYdErfKYwYL_PmQ/viewform?embedded=true" width="100%" height="1400" frameborder="0" marginheight="0" marginwidth="0" style="max-width:720px; border-radius:14px; background:#fff;">Загрузка…</iframe>
+      </center>
+    </section>
+  </main>
+  <footer>
+    <!-- Самостоятельная работа, задание 2: панель значков -->
+    <div class="icon-bar">
+      <a href="index.html" title="Главная" aria-label="Главная"><i class="fa fa-home"></i></a>
+      <a href="Links.html" title="Источники" aria-label="Источники"><i class="fa fa-search"></i></a>
+      <a href="mailto:hanowa2024@mail.ru" title="Написать письмо" aria-label="Написать письмо"><i class="fa fa-envelope"></i></a>
+      <a href="https://ru.wikipedia.org/wiki/The_Beatles" target="_blank" title="The Beatles в Википедии" aria-label="The Beatles в Википедии"><i class="fa fa-globe"></i></a>
+      <a href="https://t.me/bh_108899" target="_blank" title="Telegram" aria-label="Telegram"><i class="fa fa-telegram"></i></a>
+    </div>
+    <!-- ТК1, задание 4: горизонтальная линия -->
+    <HR align=center width=50% size=1 color=green>
+    <!-- ТК1, задание 5: авторские права -->
+    <P align=center><FONT face=Arial size=1>&copy; Все права защищены. Б. Ханова, группа БЭР 2405. 2026.</FONT></P>
+  </footer>
+</BODY>
+</HTML>

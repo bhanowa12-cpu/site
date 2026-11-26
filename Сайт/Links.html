@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<HTML lang="ru">
+<!-- ТК1, задание 1: типовая структура HTML-документа — HTML, HEAD (служебная часть), TITLE (заголовок вкладки), BODY (содержимое) -->
+<HEAD>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Источники информации, использованные при создании сайта о The Beatles.">
+  <TITLE>Источники</TITLE>
+  <link rel="icon" type="image/png" href="IMAGES/favicon.png">
+  <!-- ТК5, задание 1: подключение внешней таблицы стилей -->
+  <link rel="stylesheet" href="CSS/style.css">
+  <!-- шрифты (Google Fonts) и значки (Font Awesome) подключаются из интернета -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</HEAD>
+<BODY bgcolor="#F1F5EF">
+  <header>
+    <!-- Самостоятельная работа, задание 1.2: кнопка «Меню» со всплывающим списком (список появляется при наведении, правила .dropdown в style.css) -->
+    <div class="dropdown">
+      <button type="button" class="dropbtn"><i class="fa fa-bars"></i>Меню</button>
+      <div class="dropdown-content">
+        <a href="index.html">Главная</a>
+        <a href="Info.html">Общая информация</a>
+        <a href="History.html">История</a>
+        <a href="Film.html">Фильмография</a>
+        <a href="Disc.html">Дискография</a>
+        <span>Источники</span>
+        <a href="Shop.html">Заказать Альбом</a>
+        <a href="Contacts.html">Контакты</a>
+      </div>
+    </div>
+    <!-- ТК2: строка меню — ссылки на все страницы, кроме текущей. Самостоятельная работа, п. 2: шрифт и цвет строки задан атрибутом style -->
+    <p class="nav" align="center" style="font-family: Inter, Arial, sans-serif; color:#F5D98B">
+      <a href="index.html">Главная</a> |
+      <a href="Info.html">Общая информация</a> |
+      <a href="History.html">История</a> |
+      <a href="Film.html">Фильмография</a> |
+      <a href="Disc.html">Дискография</a> |
+      <span class="current">Источники</span> |
+      <a href="Shop.html">Заказать Альбом</a> |
+      <a href="Contacts.html">Контакты</a>
+    </p>
+    <H1 align=center><EM>Источники</EM></H1>
+  </header>
+  <!-- ТК5, задание 4: блок-панорама между шапкой и основной частью (оформление — #panorama в style.css) -->
+  <div id="panorama"><img src="IMAGES/panorama.jpg" alt="Панорама Ливерпуля"></div>
+  <main>
+    <section class="card">
+      <!-- ТК4, задание 2: нумерованный список с внешними ссылками -->
+      <OL class="sources">
+        <LI><i class="fa fa-wikipedia-w"></i><A href="https://ru.wikipedia.org/wiki/The_Beatles" target="_blank">The Beatles — Википедия</A></LI>
+        <LI><i class="fa fa-wikipedia-w"></i><A href="https://ru.wikipedia.org/wiki/Дискография_The_Beatles" target="_blank">Дискография The Beatles — Википедия</A></LI>
+        <LI><i class="fa fa-star"></i><A href="https://www.thebeatles.com/" target="_blank">Официальный сайт группы The Beatles</A></LI>
+        <LI><i class="fa fa-camera"></i><A href="https://commons.wikimedia.org/wiki/Category:The_Beatles" target="_blank">Викисклад: фотографии группы, участников, обложки и афиши</A></LI>
+        <LI><i class="fa fa-graduation-cap"></i><A href="https://sites.google.com/view/365informatika" target="_blank">Практикум «Создание web-сайта средствами языка разметки гипертекста HTML»</A></LI>
+        <LI><i class="fa fa-code"></i><A href="https://developer.mozilla.org/ru/docs/Web/HTML" target="_blank">Справочник по HTML — MDN Web Docs</A></LI>
+        <LI><i class="fa fa-paint-brush"></i><A href="https://developer.mozilla.org/ru/docs/Web/CSS" target="_blank">Справочник по CSS — MDN Web Docs</A></LI>
+        <LI><i class="fa fa-book"></i>Комолова Н.В. Самоучитель HTML. – СПб.: Питер, 2009. – 272 с.</LI>
+      </OL>
+      <P style="font-size:13px; color:#6b5a80;">Фотографии: пресс-фото The Beatles 1964 и 1965 годов (Викисклад, общественное достояние); панорама Ливерпуля — Shaun's Wildlife Photography, лицензия CC BY 2.0; переход на Abbey Road — Викисклад, общественное достояние. Обложки альбомов и афиши фильмов использованы в учебных целях.</P>
+    </section>
+  </main>
+  <footer>
+    <!-- Самостоятельная работа, задание 2: панель значков -->
+    <div class="icon-bar">
+      <a href="index.html" title="Главная" aria-label="Главная"><i class="fa fa-home"></i></a>
+      <a class="active" href="Links.html" title="Источники" aria-label="Источники"><i class="fa fa-search"></i></a>
+      <a href="mailto:hanowa2024@mail.ru" title="Написать письмо" aria-label="Написать письмо"><i class="fa fa-envelope"></i></a>
+      <a href="https://ru.wikipedia.org/wiki/The_Beatles" target="_blank" title="The Beatles в Википедии" aria-label="The Beatles в Википедии"><i class="fa fa-globe"></i></a>
+      <a href="https://t.me/bh_108899" target="_blank" title="Telegram" aria-label="Telegram"><i class="fa fa-telegram"></i></a>
+    </div>
+    <!-- ТК1, задание 4: горизонтальная линия -->
+    <HR align=center width=50% size=1 color=green>
+    <!-- ТК1, задание 5: авторские права -->
+    <P align=center><FONT face=Arial size=1>&copy; Все права защищены. Б. Ханова, группа БЭР 2405. 2026.</FONT></P>
+  </footer>
+</BODY>
+</HTML>

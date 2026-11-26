@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<HTML lang="ru">
+<!-- ТК1, задание 1: типовая структура HTML-документа — HTML, HEAD (служебная часть), TITLE (заголовок вкладки), BODY (содержимое) -->
+<HEAD>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Учебный сайт о легендарной группе The Beatles: история, участники, дискография и фильмография.">
+  <TITLE>The Beatles</TITLE>
+  <link rel="icon" type="image/png" href="IMAGES/favicon.png">
+  <!-- ТК5, задание 1: подключение внешней таблицы стилей -->
+  <link rel="stylesheet" href="CSS/style.css">
+  <!-- шрифты (Google Fonts) и значки (Font Awesome) подключаются из интернета -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style type="text/css">
+    /* на Главной основная часть полупрозрачная — сквозь неё видна фотография-фон */
+    main { background: rgba(20, 2, 45, 0.55); }
+    /* ТК5, задание 2: картинка с обтеканием */
+    IMG.fig {
+      float: left;           /* обтекание картинки по правому краю */
+      width: 100%;           /* ширина картинки — по ширине блока */
+      height: auto;          /* высота — пропорционально */
+      border-radius: 14px;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+    }
+    .textcols { white-space: nowrap; }
+    .textcols-item {
+      white-space: normal;
+      display: inline-block;
+      width: 98%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      vertical-align: top;
+      background: #FBF7F0;
+      border-radius: 18px;
+      padding: 26px 30px 12px;
+      box-sizing: border-box;
+    } /* параметры блока article */
+    .eyebrow {                     /* маленькая надпись над текстом */
+      font-family: Inter, Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #B8862B;
+      margin: 0 0 12px;
+    }
+    /* ТК5, задание 3: ещё один блок на Главной */
+    .main-wrap { margin-left: 15%; padding: 0 2%; overflow: hidden; }
+    .content {
+      float: left;
+      background: #FBF7F0;   /* светлый фон вместо coral — под цвет сайта */
+      width: 50%;            /* 50% + 50%: тексту хватает ширины, чтобы красиво выровняться по ширине */
+      height: 100%;
+      text-align: center;
+      padding: 18px 26px 26px;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    .content H1 { font-size: 30px; margin: 6px 0 18px; }
+    .parent {
+      float: left;
+      display: block;
+      width: 50%;
+      height: 100%;
+      padding-left: 24px;
+      box-sizing: border-box;
+    }
+    /* на среднем экране текст встаёт под фотографию во всю ширину */
+    @media (max-width: 1100px) {
+      .content, .parent { float: none; width: 100%; }
+      .parent { padding-left: 0; margin-top: 22px; }
+    }
+    .tagline {
+      text-align: center;
+      font-family: Inter, Arial, sans-serif;
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #cbb9e6;
+      margin: 8px 0 0;
+    }
+  </style>
+</HEAD>
+<BODY background="IMAGES/fon.jpg" bgcolor="#1f0342">
+  <header>
+    <!-- Самостоятельная работа, задание 1.1: гамбургер-меню. Невидимая галочка (input) + метка (label) с полосками; список (ul) открывается, когда галочка стоит -->
+    <div class="menu">
+      <input type="checkbox" id="burger-checkbox" class="burger-checkbox">
+      <label for="burger-checkbox" class="burger"></label>
+      <ul class="menu-list">
+        <li><a href="Info.html" class="menu-item">Общая информация</a></li>
+        <li><a href="History.html" class="menu-item">История</a></li>
+        <li><a href="Film.html" class="menu-item">Фильмография</a></li>
+        <li><a href="Disc.html" class="menu-item">Дискография</a></li>
+        <li><a href="Links.html" class="menu-item">Источники</a></li>
+        <li><a href="Shop.html" class="menu-item">Заказать Альбом</a></li>
+        <li><a href="Contacts.html" class="menu-item">Контакты</a></li>
+      </ul>
+    </div>
+    <!-- ТК2: строка меню — ссылки на все страницы, кроме текущей. Самостоятельная работа, п. 2: шрифт и цвет строки задан атрибутом style -->
+    <p class="nav" align="center" style="font-family: Inter, Arial, sans-serif; color:#F5D98B">
+      <span class="current">Главная</span> |
+      <a href="Info.html">Общая информация</a> |
+      <a href="History.html">История</a> |
+      <a href="Film.html">Фильмография</a> |
+      <a href="Disc.html">Дискография</a> |
+      <a href="Links.html">Источники</a> |
+      <a href="Shop.html">Заказать Альбом</a> |
+      <a href="Contacts.html">Контакты</a>
+    </p>
+    <h1>The Beatles</h1>
+    <p class="tagline">Ливерпуль &middot; 1960 &mdash; 1970</p>
+  </header>
+  <!-- ТК5, задание 4: блок-панорама между шапкой и основной частью (оформление — #panorama в style.css) -->
+  <div id="panorama"><img src="IMAGES/panorama.jpg" alt="Панорама Ливерпуля"></div>
+  <main>
+    <!-- ТК5, задание 2, п. 8: боковое меню вместо центральной панели -->
+    <nav class="sidenav">
+      <a href="Info.html">Общая информация</a>
+      <a href="History.html">История</a>
+      <a href="Film.html">Фильмография</a>
+      <a href="Disc.html">Дискография</a>
+      <a href="Links.html">Источники</a>
+      <a href="Shop.html">Заказать Альбом</a>
+      <a href="Contacts.html">Контакты</a>
+    </nav>
+    <div class="main-wrap">
+      <div class="content">
+        <!-- ТК1, задание 2: заголовок первого уровня, курсив, по центру -->
+        <H1 align=center><EM>Добро пожаловать на сайт, <BR>посвященный легендарной группе "The&nbsp;Beatles"</EM></H1>
+        <!-- ТК1, задание 6: фотография группы -->
+        <center><IMG src="beatles.jpg" width=50% alt="The Beatles" class="fig"></center>
+      </div>
+      <!-- ТК5, задание 3: текст перенесён в отдельный блок -->
+      <div class="parent">
+        <article class="textcols">
+          <article class="textcols-item">
+            <p class="eyebrow">О нашем сайте</p>
+            <!-- ТК1, задание 3: текст по ширине, часть слов курсивом -->
+            <P align=justify>Об этой группе написано столько, что вряд ли нам удалось бы добавить что-либо новое. На нашем сайте вы найдете <EM>историю создания группы, биографии участников, дискографию и фильмографию</EM> группы. Мы предлагаем вашему вниманию только <EM>достоверную</EM> информацию.</P>
+            <P align=justify>Это учебный сайт <EM>демонстрационного содержания</EM>. Его цель - отработка технологии разметки гипертекстовых документов с помощью языка HTML. Более полную информацию о группе <EM>The Beatles</EM> вы найдете на других сайтах. Приносим свои извинения.</P>
+          </article>
+        </article>
+      </div>
+    </div>
+    <div class="clear"></div>
+    <!-- Самостоятельная работа, задание 3: свои элементы — три колонки с float -->
+    <div class="facts">
+      <section>
+        <span class="num">1957</span>
+        <h3>Ливерпуль</h3>
+        <p>Джон Леннон знакомится с Полом Маккартни. Так начинается история будущих The Beatles.</p>
+      </section>
+      <section>
+        <span class="num">1963</span>
+        <h3>Битломания</h3>
+        <p>Популярность группы становится огромной. Это явление называют «битломанией».</p>
+      </section>
+      <section>
+        <span class="num">13</span>
+        <h3>Студийных альбомов</h3>
+        <p>С 1963 по 1970 год группа выпустила 13 альбомов, которые слушают до сих пор.</p>
+      </section>
+    </div>
+    <div class="clear"></div>
+  </main>
+  <footer>
+    <!-- Самостоятельная работа, задание 2: панель значков -->
+    <div class="icon-bar">
+      <a class="active" href="index.html" title="Главная" aria-label="Главная"><i class="fa fa-home"></i></a>
+      <a href="Links.html" title="Источники" aria-label="Источники"><i class="fa fa-search"></i></a>
+      <a href="mailto:hanowa2024@mail.ru" title="Написать письмо" aria-label="Написать письмо"><i class="fa fa-envelope"></i></a>
+      <a href="https://ru.wikipedia.org/wiki/The_Beatles" target="_blank" title="The Beatles в Википедии" aria-label="The Beatles в Википедии"><i class="fa fa-globe"></i></a>
+      <a href="https://t.me/bh_108899" target="_blank" title="Telegram" aria-label="Telegram"><i class="fa fa-telegram"></i></a>
+    </div>
+    <!-- ТК1, задание 4: горизонтальная линия -->
+    <HR align=center width=50% size=1 color=green>
+    <!-- ТК1, задание 5: авторские права -->
+    <P align=center><FONT face=Arial size=1>&copy; Все права защищены. Б. Ханова, группа БЭР 2405. 2026.</FONT></P>
+  </footer>
+</BODY>
+</HTML>
